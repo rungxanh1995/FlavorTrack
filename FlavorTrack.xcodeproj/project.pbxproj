@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2C5521D829737006007BA86A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5521D729737006007BA86A /* Constants.swift */; };
+		2C5521D829737006007BA86A /* AppImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5521D729737006007BA86A /* AppImages.swift */; };
 		2C5521DC2973728D007BA86A /* FTButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5521DB2973728D007BA86A /* FTButton.swift */; };
 		2C5521DE2973747E007BA86A /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5521DD2973747E007BA86A /* UIView.swift */; };
 		2C5521E0297374C6007BA86A /* UIResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5521DF297374C6007BA86A /* UIResponder.swift */; };
@@ -27,7 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2C5521D729737006007BA86A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		2C5521D729737006007BA86A /* AppImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppImages.swift; sourceTree = "<group>"; };
 		2C5521DB2973728D007BA86A /* FTButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTButton.swift; sourceTree = "<group>"; };
 		2C5521DD2973747E007BA86A /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		2C5521DF297374C6007BA86A /* UIResponder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIResponder.swift; sourceTree = "<group>"; };
@@ -62,7 +62,7 @@
 		2C5521D92973717B007BA86A /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				2C5521D729737006007BA86A /* Constants.swift */,
+				2C5521D729737006007BA86A /* AppImages.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -210,7 +210,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2C5521D829737006007BA86A /* Constants.swift in Sources */,
+				2C5521D829737006007BA86A /* AppImages.swift in Sources */,
 				2C5521DC2973728D007BA86A /* FTButton.swift in Sources */,
 				2C5521EE297378B0007BA86A /* FTBodyLabel.swift in Sources */,
 				2C5521E2297374ED007BA86A /* UIViewController.swift in Sources */,
