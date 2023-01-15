@@ -23,6 +23,8 @@ class FTProfileImageView: UIImageView {
 
 		image = placeholderImage
 		layer.masksToBounds = false
+		layer.borderWidth = 1
+		layer.borderColor = UIColor.systemGray4.cgColor
 		clipsToBounds = true
 	}
 	

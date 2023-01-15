@@ -28,7 +28,7 @@ final class FTButton: UIButton {
 		configuration?.cornerStyle = .medium
 		
 		titleLabel?.font = .preferredFont(forTextStyle: .headline)
-		setTitleColor(.white, for: .normal)
+		setTitleColor(UIColor.theme.accent, for: .normal)
 	}
 	
 	func setNew(title: String, withColor color: UIColor) {
