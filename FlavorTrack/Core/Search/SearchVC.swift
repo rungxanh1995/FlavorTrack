@@ -79,7 +79,7 @@ private extension SearchVC {
 	private func validateAndPushBusinessListVC() -> Void {
 		guard _isLocationEntered else {
 			presentAlert(title: "No Location?",
-						 message: "Please enter an address or postal code near you, so we can search 😊.")
+						 message: "Please enter an address, road name, or zip code, etc.\nThen we can search 😊.")
 			return
 		}
 		
