@@ -34,6 +34,6 @@ final class FTButton: UIButton {
 	func setNew(title: String, withColor color: UIColor) {
 		configuration?.title = title
 		configuration?.baseBackgroundColor = color
-		configuration?.baseForegroundColor = .white
+		configuration?.baseForegroundColor = color
 	}
 }
