@@ -10,17 +10,17 @@ import UIKit
 class SearchVC: UIViewController {
 
 	private let logoImageView: UIImageView = .init()
-	private let addressTextField: FTTextField = .init(withPlaceholder: "Enter an address near you")
+	private let locationTextField: FTTextField = .init(withPlaceholder: "An address or postal code near you")
 	private let businessTypeTextField: FTTextField = .init(withPlaceholder: "What are you craving? Vietnamese?")
 	private let callToActionButton: FTButton = .init(withTitle: "Let's go!")
 	
-	private var _isAddressEntered: Bool { !addressTextField.text!.isEmpty }
+	private var _isLocationEntered: Bool { !locationTextField.text!.isEmpty }
 	private var _isBusinessTypeEntered: Bool { !businessTypeTextField.text!.isEmpty }
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		view.backgroundColor = .systemBackground
-		view.addAllSubviewsAndDisableAutoConstraints(logoImageView, addressTextField, businessTypeTextField, callToActionButton)
+		view.addAllSubviewsAndDisableAutoConstraints(logoImageView, locationTextField, businessTypeTextField, callToActionButton)
 		configLogoImageView()
 		configTextFields()
 		configActionButton()
@@ -49,18 +49,18 @@ private extension SearchVC {
 	
 	private func configTextFields() -> Void {
 		NSLayoutConstraint.activate([
-			addressTextField.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 48),
-			addressTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32),
-			addressTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32),
-			addressTextField.heightAnchor.constraint(equalToConstant: 44),
+			locationTextField.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 48),
+			locationTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32),
+			locationTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32),
+			locationTextField.heightAnchor.constraint(equalToConstant: 44),
 			
-			businessTypeTextField.topAnchor.constraint(equalTo: addressTextField.bottomAnchor, constant: 24),
+			businessTypeTextField.topAnchor.constraint(equalTo: locationTextField.bottomAnchor, constant: 24),
 			businessTypeTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32),
 			businessTypeTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32),
 			businessTypeTextField.heightAnchor.constraint(equalToConstant: 44)
 		])
 		
-		addressTextField.delegate = self
+		locationTextField.delegate = self
 		businessTypeTextField.delegate = self
 	}
 	
@@ -78,7 +78,7 @@ private extension SearchVC {
 
 extension SearchVC: UITextFieldDelegate {
 	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-		addressTextField.resignFirstResponder()
+		locationTextField.resignFirstResponder()
 		businessTypeTextField.resignFirstResponder()
 		return true
 	}
