@@ -17,6 +17,7 @@ class BusinessInfoHeaderVC: UIViewController {
 	private let openStatusLabel: FTSecondaryTitleLabel = .init(ofSize: 19)
 	private let costIcon: UIImageView = .init()
 	private let costLabel: FTSecondaryTitleLabel = .init(ofSize: 19)
+	private let underlyingCostLabel: FTSecondaryTitleLabel = .init(ofSize: 19)
 	private let ratingIcon: UIImageView = .init()
 	private let ratingLabel: FTSecondaryTitleLabel = .init(ofSize: 19)
 	
@@ -44,7 +45,7 @@ private extension BusinessInfoHeaderVC {
 	private func layoutUIElements() -> Void {
 		view.addAllSubviewsAndDisableAutoConstraints(profileImageView, nameLabel, distanceIcon,
 													 distanceLabel, openStatusIcon, openStatusLabel,
-													 costIcon, costLabel, ratingIcon, ratingLabel)
+													 costIcon, costLabel, underlyingCostLabel, ratingIcon, ratingLabel)
 		
 		let _imgAndTextPadding: CGFloat = 12.0
 		let _infoPiecePadding: CGFloat = 16.0
@@ -91,6 +92,11 @@ private extension BusinessInfoHeaderVC {
 			costLabel.widthAnchor.constraint(equalToConstant: 100),
 			costLabel.heightAnchor.constraint(equalToConstant: _infoTextHeight),
 			
+			underlyingCostLabel.centerYAnchor.constraint(equalTo: costIcon.centerYAnchor),
+			underlyingCostLabel.leadingAnchor.constraint(equalTo: costIcon.trailingAnchor, constant: 6),
+			underlyingCostLabel.widthAnchor.constraint(equalToConstant: 100),
+			underlyingCostLabel.heightAnchor.constraint(equalToConstant: _infoTextHeight),
+			
 			ratingIcon.centerYAnchor.constraint(equalTo: costIcon.centerYAnchor),
 			ratingIcon.leadingAnchor.constraint(equalTo: costLabel.trailingAnchor, constant: _infoPiecePadding),
 			ratingIcon.widthAnchor.constraint(equalToConstant: _iconSize),
@@ -121,6 +127,8 @@ private extension BusinessInfoHeaderVC {
 		costIcon.image = SFSymbols.money
 		costIcon.tintColor = .secondaryLabel
 		costLabel.text = business.price
+		underlyingCostLabel.text = "$$$$"
+		underlyingCostLabel.setNew(color: .quaternaryLabel)
 		
 		ratingIcon.image = SFSymbols.starFilled
 		ratingIcon.tintColor = .secondaryLabel
