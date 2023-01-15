@@ -48,4 +48,14 @@ extension UIViewController {
 			self?.present(alert, animated: true)
 		}
 	}
+	
+	func presentDefaultAlert() -> Void {
+		presentAlert(message: BusinessDataService.NetworkError.unableToComplete.rawValue)
+	}
+	
+	func showEmptyStateView(saying message: String, in view: UIView) -> Void {
+		let emptyStateView: GHEmptyStateView = .init(message: message)
+		emptyStateView.frame = view.bounds
+		view.addSubview(emptyStateView)
+	}
 }

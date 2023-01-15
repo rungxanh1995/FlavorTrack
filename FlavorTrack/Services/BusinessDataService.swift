@@ -11,11 +11,11 @@ final class BusinessDataService {
 	static let shared: BusinessDataService = .init()
 	private init() {}
 	
-	static let batchSize: Int = 20
+	let batchSize: Int = 50
 	
-	func getBusinessList(nearby address: String, businessType: String, offset: Int = 0,
+	func getBusinessList(nearby address: String, businessType: String,
 						 onComplete: @escaping (Result<[Business], BusinessDataService.NetworkError>) -> Void) {
-		let endpoint = "\(ApiConstants.Endpoint.base)?\(ApiConstants.Endpoint.addAddress(address.percentEncoded))&\(ApiConstants.Endpoint.addBusinessType(businessType.percentEncoded))&\(ApiConstants.Endpoint.defaultRadiusLimitAndOffset)"
+		let endpoint = "\(ApiConstants.Endpoint.base)?\(ApiConstants.Endpoint.addAddress(address.percentEncoded))&\(ApiConstants.Endpoint.addBusinessType(businessType.percentEncoded))&\(ApiConstants.Endpoint.defaultRadiusAndBatchLimit)"
 		
 		guard let url = URL(string: endpoint) else {
 			onComplete(.failure(.invalidInputs))

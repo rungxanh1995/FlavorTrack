@@ -21,6 +21,6 @@ enum ApiConstants {
 		static func addBusinessType(_ businessType: String) -> String { "term=\(businessType)" }
 		
 		/// Use this to end off the URL
-		static let defaultRadiusLimitAndOffset = "radius=2000&sort_by=distance&limit=\(BusinessDataService.batchSize)&offset="
+		static let defaultRadiusAndBatchLimit = "radius=2000&sort_by=distance&limit=\(BusinessDataService.shared.batchSize)"
 	}
 }

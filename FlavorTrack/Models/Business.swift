@@ -8,6 +8,7 @@
 import Foundation
 
 struct Business: Codable {
+	let id: String
 	let name: String
 	let imageURL: String
 	let isClosed: Bool
@@ -21,6 +22,7 @@ struct Business: Codable {
 	let distance: Double
 
 	internal enum CodingKeys: String, CodingKey {
+		case id = "id"
 		case name = "name"
 		case imageURL = "image_url"
 		case isClosed = "is_closed"
@@ -31,18 +33,22 @@ struct Business: Codable {
 	}
 }
 
+extension Business: Hashable {
+	static func == (lhs: Business, rhs: Business) -> Bool { lhs.id == rhs.id }
+}
+
 // MARK: - Category
-struct Category: Codable {
+struct Category: Codable, Hashable {
 	var title: String?
 }
 
 // MARK: - Center
-struct Coordinates: Codable {
+struct Coordinates: Codable, Hashable {
 	var latitude, longitude: Double?
 }
 
 // MARK: - Location
-struct Location: Codable {
+struct Location: Codable, Hashable {
 	var address1, address2: String?
 	var city, zipCode, state: String?
 	var displayAddress: [String]?

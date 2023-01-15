@@ -10,8 +10,8 @@ import UIKit
 class SearchVC: UIViewController {
 
 	private let logoImageView: UIImageView = .init()
-	private let locationTextField: FTTextField = .init(withPlaceholder: "An address or postal code near you")
-	private let businessTypeTextField: FTTextField = .init(withPlaceholder: "What are you craving? Vietnamese?")
+	private let locationTextField: FTTextField = .init(withPlaceholder: "Your current whereabouts?")
+	private let businessTypeTextField: FTTextField = .init(withPlaceholder: "What are you craving?")
 	private let callToActionButton: FTButton = .init(withTitle: "Let's go!")
 	
 	private var _isLocationEntered: Bool { !locationTextField.text!.isEmpty }
@@ -72,7 +72,29 @@ private extension SearchVC {
 			callToActionButton.heightAnchor.constraint(equalToConstant: 44)
 		])
 		
-//		callToActionButton.addTarget(self, action: #selector(_pushFollowerListVC), for: .touchUpInside)
+		callToActionButton.addTarget(self, action: #selector(validateAndPushBusinessListVC), for: .touchUpInside)
+	}
+	
+	@objc
+	private func validateAndPushBusinessListVC() -> Void {
+		guard _isLocationEntered else {
+			presentAlert(title: "No Location?",
+						 message: "Please enter an address or postal code near you.\nWe need to know some whereabouts 😊.")
+			return
+		}
+		
+		guard _isBusinessTypeEntered else {
+			presentAlert(title: "Unsure what to find?",
+						 message: "Please enter a business type.\nHow about 'vietnamese', or 'coffee'?")
+			return
+		}
+		
+		locationTextField.resignFirstResponder()
+		businessTypeTextField.resignFirstResponder()
+		
+		let targetVC: BusinessListVC = .init(for: businessTypeTextField.text!,
+											 near: locationTextField.text!)
+		navigationController?.pushViewController(targetVC, animated: true)
 	}
 }
 
@@ -80,6 +102,7 @@ extension SearchVC: UITextFieldDelegate {
 	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
 		locationTextField.resignFirstResponder()
 		businessTypeTextField.resignFirstResponder()
+		validateAndPushBusinessListVC()
 		return true
 	}
 }
