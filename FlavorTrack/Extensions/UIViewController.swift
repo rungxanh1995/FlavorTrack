@@ -34,3 +34,18 @@ extension UIViewController {
 		view.frame.origin.y = 0
 	}
 }
+
+extension UIViewController {
+	/// Presents custom alert on main thread
+	func presentAlert(title: String = "Something bad happened",
+					  message: String,
+					  buttonTitle: String = "OK") -> Void {
+		
+		DispatchQueue.main.async { [weak self] in
+			let alert: FTAlert = .init(title: title, message: message, btnTitle: buttonTitle)
+			alert.modalPresentationStyle = .overFullScreen
+			alert.modalTransitionStyle = .crossDissolve
+			self?.present(alert, animated: true)
+		}
+	}
+}
