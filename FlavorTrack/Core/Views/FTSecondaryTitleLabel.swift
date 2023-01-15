@@ -29,4 +29,8 @@ class FTSecondaryTitleLabel: UILabel {
 		minimumScaleFactor = 0.9
 		lineBreakMode = .byTruncatingTail
 	}
+	
+	func setNew(color: UIColor) -> Void {
+		textColor = color
+	}
 }

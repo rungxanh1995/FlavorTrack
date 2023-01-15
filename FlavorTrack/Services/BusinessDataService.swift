@@ -22,13 +22,8 @@ final class BusinessDataService {
 			return
 		}
 		
-		var request = URLRequest(url: url, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 10.0)
-		let headers = [
-		  "accept": "application/json",
-		  "Authorization": ApiConstants.authString
-		]
-		request.allHTTPHeaderFields = headers
-		request.httpMethod = "GET"
+		var request = URLRequest(url: url)
+		request.setValue(ApiConstants.authString, forHTTPHeaderField: "Authorization")
 
 		URLSession.shared.dataTask(with: request) { data, response, error in
 			if error != nil {

@@ -58,4 +58,11 @@ extension UIViewController {
 		emptyStateView.frame = view.bounds
 		view.addSubview(emptyStateView)
 	}
+	
+	/// Place a child view controller into a custom view that this view controller manages
+	func addChildController(_ childController: UIViewController, to containerView: UIView) -> Void {
+		addChild(childController)
+		containerView.addSubview(childController.view)
+		childController.view.frame = containerView.bounds
+	}
 }
