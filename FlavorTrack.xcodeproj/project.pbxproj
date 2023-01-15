@@ -23,6 +23,7 @@
 		2C5521F4297383FE007BA86A /* ApiConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5521F3297383FE007BA86A /* ApiConstants.swift */; };
 		2C5521F729738947007BA86A /* RawServerResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5521F629738947007BA86A /* RawServerResponse.swift */; };
 		2C5521F929738970007BA86A /* Business.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5521F829738970007BA86A /* Business.swift */; };
+		2C5945DB297472BE00D29423 /* BusinessInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5945DA297472BE00D29423 /* BusinessInfoVC.swift */; };
 		2CC75D0029735FF900584F45 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC75CFF29735FF900584F45 /* AppDelegate.swift */; };
 		2CC75D0229735FF900584F45 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC75D0129735FF900584F45 /* SceneDelegate.swift */; };
 		2CC75D0429735FF900584F45 /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC75D0329735FF900584F45 /* SearchVC.swift */; };
@@ -57,6 +58,7 @@
 		2C5521F3297383FE007BA86A /* ApiConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiConstants.swift; sourceTree = "<group>"; };
 		2C5521F629738947007BA86A /* RawServerResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RawServerResponse.swift; sourceTree = "<group>"; };
 		2C5521F829738970007BA86A /* Business.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Business.swift; sourceTree = "<group>"; };
+		2C5945DA297472BE00D29423 /* BusinessInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessInfoVC.swift; sourceTree = "<group>"; };
 		2CC75CFC29735FF900584F45 /* FlavorTrack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlavorTrack.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CC75CFF29735FF900584F45 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2CC75D0129735FF900584F45 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -132,6 +134,14 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		2C5945D92974729E00D29423 /* BusinessInfoVC */ = {
+			isa = PBXGroup;
+			children = (
+				2C5945DA297472BE00D29423 /* BusinessInfoVC.swift */,
+			);
+			path = BusinessInfoVC;
+			sourceTree = "<group>";
+		};
 		2CC75CF329735FF900584F45 = {
 			isa = PBXGroup;
 			children = (
@@ -184,6 +194,7 @@
 				2C5521DA2973726E007BA86A /* Views */,
 				2CC75D3129736C8200584F45 /* Search */,
 				2CDD54EE29739C7E000EF4BB /* Business List */,
+				2C5945D92974729E00D29423 /* BusinessInfoVC */,
 				2CDD54FF2973AB24000EF4BB /* Favorite List */,
 			);
 			path = Core;
@@ -298,6 +309,7 @@
 				2C5521F729738947007BA86A /* RawServerResponse.swift in Sources */,
 				2CC75D0429735FF900584F45 /* SearchVC.swift in Sources */,
 				2CDD55012973AB38000EF4BB /* FavoriteListVC.swift in Sources */,
+				2C5945DB297472BE00D29423 /* BusinessInfoVC.swift in Sources */,
 				2CC75D2E2973682500584F45 /* UIColor.swift in Sources */,
 				2C5521E8297376AD007BA86A /* FTAlertContainerView.swift in Sources */,
 				2C5521E429737598007BA86A /* FTTextField.swift in Sources */,

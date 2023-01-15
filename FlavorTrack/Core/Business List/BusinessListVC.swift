@@ -123,9 +123,10 @@ private extension BusinessListVC {
 
 extension BusinessListVC: UICollectionViewDelegate {
 	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-		// TODO: Present info VC
 		let selectedItem = isInSearchMode ? filteredBusinessList[indexPath.item] : businessList[indexPath.item]
-		print(selectedItem.name + " selected")
+		let targetVC: BusinessInfoVC = .init(for: selectedItem)
+		let navController: UINavigationController = .init(rootViewController: targetVC)
+		present(navController, animated: true)
 	}
 }
 
