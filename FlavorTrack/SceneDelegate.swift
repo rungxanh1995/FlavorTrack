@@ -16,7 +16,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 		guard let windowScene = (scene as? UIWindowScene) else { return }
 		window = .init(frame: windowScene.coordinateSpace.bounds)
 		window?.windowScene = windowScene
-		window?.rootViewController = ViewController()
+		window?.rootViewController = SearchVC()
 		window?.makeKeyAndVisible()
 		UINavigationBar.appearance().tintColor = UIColor.theme.accent
 		UINavigationBar.appearance().tintColor = UIColor.theme.accent

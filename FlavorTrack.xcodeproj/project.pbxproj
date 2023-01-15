@@ -7,19 +7,41 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C5521D829737006007BA86A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5521D729737006007BA86A /* Constants.swift */; };
+		2C5521DC2973728D007BA86A /* FTButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5521DB2973728D007BA86A /* FTButton.swift */; };
+		2C5521DE2973747E007BA86A /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5521DD2973747E007BA86A /* UIView.swift */; };
+		2C5521E0297374C6007BA86A /* UIResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5521DF297374C6007BA86A /* UIResponder.swift */; };
+		2C5521E2297374ED007BA86A /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5521E1297374ED007BA86A /* UIViewController.swift */; };
+		2C5521E429737598007BA86A /* FTTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5521E329737598007BA86A /* FTTextField.swift */; };
+		2C5521E629737693007BA86A /* FTAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5521E529737693007BA86A /* FTAlert.swift */; };
+		2C5521E8297376AD007BA86A /* FTAlertContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5521E7297376AD007BA86A /* FTAlertContainerView.swift */; };
+		2C5521EA29737730007BA86A /* FTPrimaryTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5521E929737730007BA86A /* FTPrimaryTitleLabel.swift */; };
+		2C5521EC2973777F007BA86A /* FTSecondaryTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5521EB2973777F007BA86A /* FTSecondaryTitleLabel.swift */; };
+		2C5521EE297378B0007BA86A /* FTBodyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5521ED297378B0007BA86A /* FTBodyLabel.swift */; };
 		2CC75D0029735FF900584F45 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC75CFF29735FF900584F45 /* AppDelegate.swift */; };
 		2CC75D0229735FF900584F45 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC75D0129735FF900584F45 /* SceneDelegate.swift */; };
-		2CC75D0429735FF900584F45 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC75D0329735FF900584F45 /* ViewController.swift */; };
+		2CC75D0429735FF900584F45 /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC75D0329735FF900584F45 /* SearchVC.swift */; };
 		2CC75D0929735FFB00584F45 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CC75D0829735FFB00584F45 /* Assets.xcassets */; };
 		2CC75D0C29735FFB00584F45 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CC75D0A29735FFB00584F45 /* LaunchScreen.storyboard */; };
 		2CC75D2E2973682500584F45 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC75D2D2973682500584F45 /* UIColor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2C5521D729737006007BA86A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		2C5521DB2973728D007BA86A /* FTButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTButton.swift; sourceTree = "<group>"; };
+		2C5521DD2973747E007BA86A /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		2C5521DF297374C6007BA86A /* UIResponder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIResponder.swift; sourceTree = "<group>"; };
+		2C5521E1297374ED007BA86A /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		2C5521E329737598007BA86A /* FTTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTTextField.swift; sourceTree = "<group>"; };
+		2C5521E529737693007BA86A /* FTAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTAlert.swift; sourceTree = "<group>"; };
+		2C5521E7297376AD007BA86A /* FTAlertContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTAlertContainerView.swift; sourceTree = "<group>"; };
+		2C5521E929737730007BA86A /* FTPrimaryTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTPrimaryTitleLabel.swift; sourceTree = "<group>"; };
+		2C5521EB2973777F007BA86A /* FTSecondaryTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTSecondaryTitleLabel.swift; sourceTree = "<group>"; };
+		2C5521ED297378B0007BA86A /* FTBodyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTBodyLabel.swift; sourceTree = "<group>"; };
 		2CC75CFC29735FF900584F45 /* FlavorTrack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlavorTrack.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CC75CFF29735FF900584F45 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2CC75D0129735FF900584F45 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		2CC75D0329735FF900584F45 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		2CC75D0329735FF900584F45 /* SearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
 		2CC75D0829735FFB00584F45 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2CC75D0B29735FFB00584F45 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2CC75D0D29735FFB00584F45 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -37,6 +59,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2C5521D92973717B007BA86A /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				2C5521D729737006007BA86A /* Constants.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		2C5521DA2973726E007BA86A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				2C5521DB2973728D007BA86A /* FTButton.swift */,
+				2C5521E329737598007BA86A /* FTTextField.swift */,
+				2C5521E529737693007BA86A /* FTAlert.swift */,
+				2C5521E7297376AD007BA86A /* FTAlertContainerView.swift */,
+				2C5521E929737730007BA86A /* FTPrimaryTitleLabel.swift */,
+				2C5521EB2973777F007BA86A /* FTSecondaryTitleLabel.swift */,
+				2C5521ED297378B0007BA86A /* FTBodyLabel.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		2CC75CF329735FF900584F45 = {
 			isa = PBXGroup;
 			children = (
@@ -56,15 +100,44 @@
 		2CC75CFE29735FF900584F45 /* FlavorTrack */ = {
 			isa = PBXGroup;
 			children = (
-				2CC75CFF29735FF900584F45 /* AppDelegate.swift */,
-				2CC75D0129735FF900584F45 /* SceneDelegate.swift */,
-				2CC75D0329735FF900584F45 /* ViewController.swift */,
-				2CC75D2D2973682500584F45 /* UIColor.swift */,
+				2CC75D3029736C7A00584F45 /* Core */,
+				2CC75D2F29736C7400584F45 /* Extensions */,
+				2C5521D92973717B007BA86A /* Utilities */,
 				2CC75D0829735FFB00584F45 /* Assets.xcassets */,
 				2CC75D0A29735FFB00584F45 /* LaunchScreen.storyboard */,
 				2CC75D0D29735FFB00584F45 /* Info.plist */,
+				2CC75CFF29735FF900584F45 /* AppDelegate.swift */,
+				2CC75D0129735FF900584F45 /* SceneDelegate.swift */,
 			);
 			path = FlavorTrack;
+			sourceTree = "<group>";
+		};
+		2CC75D2F29736C7400584F45 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				2CC75D2D2973682500584F45 /* UIColor.swift */,
+				2C5521DD2973747E007BA86A /* UIView.swift */,
+				2C5521DF297374C6007BA86A /* UIResponder.swift */,
+				2C5521E1297374ED007BA86A /* UIViewController.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		2CC75D3029736C7A00584F45 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				2C5521DA2973726E007BA86A /* Views */,
+				2CC75D3129736C8200584F45 /* Search */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		2CC75D3129736C8200584F45 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				2CC75D0329735FF900584F45 /* SearchVC.swift */,
+			);
+			path = Search;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,9 +210,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2CC75D0429735FF900584F45 /* ViewController.swift in Sources */,
+				2C5521D829737006007BA86A /* Constants.swift in Sources */,
+				2C5521DC2973728D007BA86A /* FTButton.swift in Sources */,
+				2C5521EE297378B0007BA86A /* FTBodyLabel.swift in Sources */,
+				2C5521E2297374ED007BA86A /* UIViewController.swift in Sources */,
+				2CC75D0429735FF900584F45 /* SearchVC.swift in Sources */,
 				2CC75D2E2973682500584F45 /* UIColor.swift in Sources */,
+				2C5521E8297376AD007BA86A /* FTAlertContainerView.swift in Sources */,
+				2C5521E429737598007BA86A /* FTTextField.swift in Sources */,
+				2C5521E0297374C6007BA86A /* UIResponder.swift in Sources */,
+				2C5521DE2973747E007BA86A /* UIView.swift in Sources */,
 				2CC75D0029735FF900584F45 /* AppDelegate.swift in Sources */,
+				2C5521EC2973777F007BA86A /* FTSecondaryTitleLabel.swift in Sources */,
+				2C5521EA29737730007BA86A /* FTPrimaryTitleLabel.swift in Sources */,
+				2C5521E629737693007BA86A /* FTAlert.swift in Sources */,
 				2CC75D0229735FF900584F45 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
