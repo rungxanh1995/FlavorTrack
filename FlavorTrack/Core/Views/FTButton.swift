@@ -18,7 +18,7 @@ final class FTButton: UIButton {
 	
 	convenience init(withTitle title: String, color: UIColor = UIColor.theme.accent) {
 		self.init(frame: .zero)
-		
+		setNew(title: title, withColor: color)
 	}
 	
 	private func configure() -> Void {
