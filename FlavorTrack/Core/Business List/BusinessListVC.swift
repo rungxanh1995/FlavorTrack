@@ -38,6 +38,7 @@ class BusinessListVC: UIViewController, LoadableScreen {
 		
 		configCollectionView()
 		configDataSource()
+		configSearchBar()
 		getBusinessList(for: businessType, near: location)
 	}
 	
@@ -65,6 +66,14 @@ private extension BusinessListVC {
 			cell.set(with: business)
 			return cell
 		})
+	}
+	
+	private func configSearchBar() -> Void {
+		let searchController: UISearchController = .init()
+		searchController.searchBar.placeholder = "Search a name"
+		searchController.searchResultsUpdater = self
+		navigationItem.hidesSearchBarWhenScrolling = false
+		navigationItem.searchController = searchController
 	}
 	
 	private func getBusinessList(for businessType: String, near location: String) -> Void {
@@ -115,5 +124,22 @@ private extension BusinessListVC {
 extension BusinessListVC: UICollectionViewDelegate {
 	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 		// TODO: Present info VC
+		let selectedItem = isInSearchMode ? filteredBusinessList[indexPath.item] : businessList[indexPath.item]
+		print(selectedItem.name + " selected")
+	}
+}
+
+extension BusinessListVC: UISearchResultsUpdating {
+	func updateSearchResults(for searchController: UISearchController) {
+		guard let searchText = searchController.searchBar.text, !searchText.isEmpty else {
+			isInSearchMode = false
+			filteredBusinessList.removeAll()
+			updateData(using: businessList)
+			return
+		}
+		
+		isInSearchMode = true
+		filteredBusinessList = businessList.filter { $0.name.lowercased().contains(searchText.lowercased()) }
+		updateData(using: filteredBusinessList)
 	}
 }
