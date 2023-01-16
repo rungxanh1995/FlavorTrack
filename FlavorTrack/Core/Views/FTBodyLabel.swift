@@ -26,8 +26,8 @@ class FTBodyLabel: UILabel {
 		disableAutoConstraints()
 
 		textColor = .secondaryLabel
-		adjustsFontSizeToFitWidth = true
-		minimumScaleFactor = 0.8
-		lineBreakMode = .byWordWrapping
+		adjustsFontSizeToFitWidth = false
+		minimumScaleFactor = 1.0
+		lineBreakMode = .byTruncatingTail
 	}
 }

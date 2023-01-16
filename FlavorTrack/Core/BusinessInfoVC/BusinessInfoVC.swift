@@ -16,6 +16,7 @@ class BusinessInfoVC: UIViewController, LoadableScreen {
 	private var contentView: UIView!
 	
 	private var headerView: UIView!
+	private var detailView: UIView!
 	
 	init(for business: Business) {
 		super.init(nibName: nil, bundle: nil)
@@ -23,6 +24,7 @@ class BusinessInfoVC: UIViewController, LoadableScreen {
 		self.scrollView = .init()
 		self.contentView = .init()
 		self.headerView = .init()
+		self.detailView = .init()
 	}
 	
 	required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
@@ -42,7 +44,7 @@ private extension BusinessInfoVC {
 	private func layoutUIElements() -> Void {
 		view.addAllSubviewsAndDisableAutoConstraints(scrollView)
 		scrollView.addAllSubviewsAndDisableAutoConstraints(contentView)
-		contentView.addAllSubviewsAndDisableAutoConstraints(headerView)
+		contentView.addAllSubviewsAndDisableAutoConstraints(headerView, detailView)
 		
 		let _edgePadding: CGFloat = 12.0
 		let _itemPadding: CGFloat = 24.0
@@ -62,7 +64,12 @@ private extension BusinessInfoVC {
 			headerView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: _edgePadding),
 			headerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: _edgePadding),
 			headerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -(_edgePadding)),
-			headerView.heightAnchor.constraint(equalToConstant: 180),
+			headerView.heightAnchor.constraint(equalToConstant: 120),
+			
+			detailView.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: _itemPadding),
+			detailView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: _edgePadding),
+			detailView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -(_edgePadding)),
+			detailView.heightAnchor.constraint(equalToConstant: 120),
 		])
 		
 		
@@ -72,6 +79,7 @@ private extension BusinessInfoVC {
 	
 	private func configUIElements(for business: Business) -> Void {
 		addChildController(BusinessInfoHeaderVC(for: business), to: headerView)
+		addChildController(BusinessInfoDetailVC(for: business), to: detailView)
 	}
 	
 	@objc
