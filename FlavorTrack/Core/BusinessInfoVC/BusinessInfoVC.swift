@@ -53,9 +53,8 @@ private extension BusinessInfoVC {
 		doneBarBtn.accessibilityValue = "button"
 		navigationItem.setRightBarButtonItems([doneBarBtn], animated: true)
 		
-		// TODO: Wire to persistence
 		let favBarBtn: UIBarButtonItem = .init(image: SFSymbols.star, style: .plain,
-											   target: self, action: nil)
+											   target: self, action: #selector(_favoriteButtonClicked))
 		favBarBtn.isAccessibilityElement = true
 		favBarBtn.accessibilityLabel = "Add to favorites"
 		favBarBtn.accessibilityValue = "button"
@@ -107,6 +106,20 @@ private extension BusinessInfoVC {
 	
 	@objc
 	private func _dismissVC() { dismiss(animated: true) }
+	
+	@objc
+	private func _favoriteButtonClicked() -> Void {
+		showLoadingOverlay()
+		defer { dismissLoadingOverlay() }
+		
+		let savingError = PersistenceManager.updateWith(business, forAction: .add)
+		switch savingError {
+			case .none:
+				presentAlert(title: "Favorited!", message: "Successfully saved \(business.name) to favorites")
+			case .some(let error):
+				presentAlert(title: "Uh-oh!", message: error.rawValue)
+		}
+	}
 }
 
 extension BusinessInfoVC: MapNavigationRequestDelegate {
