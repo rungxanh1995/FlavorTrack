@@ -12,7 +12,7 @@ class BusinessListVC: UIViewController, LoadableScreen {
 	internal enum CollectionSection { case main }
 	
 	var businessType: String!
-	var location: String!
+	var searchedLocation: String!
 	private var businessList: [Business] = []
 	private var filteredBusinessList: [Business] = []
 	
@@ -26,7 +26,7 @@ class BusinessListVC: UIViewController, LoadableScreen {
 	init(for businessType: String, near location: String) {
 		super.init(nibName: nil, bundle: nil)
 		self.businessType = businessType
-		self.location = location
+		self.searchedLocation = location
 	}
 	
 	required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
@@ -34,12 +34,12 @@ class BusinessListVC: UIViewController, LoadableScreen {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		view.backgroundColor = .systemBackground
-		title = "\(businessType.capitalized) near \(location.capitalized(with: .current))"
+		title = "\(businessType.capitalized) near \(searchedLocation.capitalized(with: .current))"
 		
 		configCollectionView()
 		configDataSource()
 		configSearchBar()
-		getBusinessList(for: businessType, near: location)
+		getBusinessList(for: businessType, near: searchedLocation)
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
@@ -124,7 +124,7 @@ private extension BusinessListVC {
 extension BusinessListVC: UICollectionViewDelegate {
 	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 		let selectedItem = isInSearchMode ? filteredBusinessList[indexPath.item] : businessList[indexPath.item]
-		let targetVC: BusinessInfoVC = .init(for: selectedItem)
+		let targetVC: BusinessInfoVC = .init(for: selectedItem, near: searchedLocation)
 		let navController: UINavigationController = .init(rootViewController: targetVC)
 		present(navController, animated: true)
 	}

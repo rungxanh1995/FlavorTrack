@@ -12,6 +12,7 @@ class BusinessInfoVC: UIViewController, LoadableScreen {
 
 	internal var containerView: UIView!
 	private var business: Business!
+	private var searchedLocation: String!
 
 	private var scrollView: UIScrollView!
 	private var contentView: UIView!
@@ -20,9 +21,10 @@ class BusinessInfoVC: UIViewController, LoadableScreen {
 	private var detailView: UIView!
 	private var mapHostingView: UIView!
 	
-	init(for business: Business) {
+	init(for business: Business, near location: String = "searched location") {
 		super.init(nibName: nil, bundle: nil)
 		self.business = business
+		self.searchedLocation = location
 		self.scrollView = .init()
 		self.contentView = .init()
 		self.headerView = .init()
@@ -79,12 +81,12 @@ private extension BusinessInfoVC {
 			contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
 			contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
 			contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
-			contentView.heightAnchor.constraint(equalToConstant: 650),
+			contentView.heightAnchor.constraint(equalToConstant: 660),
 			
 			headerView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: _edgePadding),
 			headerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: _edgePadding),
 			headerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -(_edgePadding)),
-			headerView.heightAnchor.constraint(equalToConstant: 100),
+			headerView.heightAnchor.constraint(equalToConstant: 120),
 			
 			detailView.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: _itemPadding),
 			detailView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: _edgePadding),
@@ -99,7 +101,9 @@ private extension BusinessInfoVC {
 	}
 	
 	private func configUIElements(for business: Business) -> Void {
-		addChildController(BusinessInfoHeaderVC(for: business), to: headerView)
+		addChildController(BusinessInfoHeaderVC(
+			for: business, near: searchedLocation.capitalized(with: .current)),
+			to: headerView)
 		addChildController(BusinessInfoDetailVC(for: business), to: detailView)
 		addChildController(BusinessInfoMapVC(for: business, delegate: self), to: mapHostingView)
 	}
