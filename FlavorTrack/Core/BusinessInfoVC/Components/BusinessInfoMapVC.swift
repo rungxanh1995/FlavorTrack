@@ -68,10 +68,7 @@ private extension BusinessInfoMapVC {
 	}
 	
 	private func configMapRegionAndAnnotation() -> Void {
-		let annotation = BusinessMapAnnotation(
-			title: business.name,
-			coordinate: .init(latitude: business.coordinates.latitude, longitude: business.coordinates.longitude),
-			info: business.readableCategories)
+		let annotation = BusinessMapAnnotation.generate(from: business)
 		let zoomLevel = 0.005
 		mapView.region = MKCoordinateRegion(center: annotation.coordinate,
 											span: MKCoordinateSpan(latitudeDelta: zoomLevel, longitudeDelta: zoomLevel))

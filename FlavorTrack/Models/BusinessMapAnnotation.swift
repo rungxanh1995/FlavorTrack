@@ -21,3 +21,12 @@ class BusinessMapAnnotation: NSObject, MKAnnotation {
 		self.info = info
 	}
 }
+
+extension BusinessMapAnnotation {
+	static func generate(from business: Business) -> BusinessMapAnnotation {
+		return .init(
+			title: business.name,
+			coordinate: .init(latitude: business.coordinates.latitude, longitude: business.coordinates.longitude),
+			info: business.readableCategories)
+	}
+}

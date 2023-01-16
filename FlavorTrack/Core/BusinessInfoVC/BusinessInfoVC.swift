@@ -115,10 +115,7 @@ extension BusinessInfoVC: MapNavigationRequestDelegate {
 	/// If I were to improve this further, I'd like to not go with delegation and move
 	/// this method (and call to action button) to my map VC for separation of concerns.
 	func didRequestMapNavigation(to business: Business) -> Void {
-		let annotation = BusinessMapAnnotation(
-			title: business.name,
-			coordinate: .init(latitude: business.coordinates.latitude, longitude: business.coordinates.longitude),
-			info: business.readableCategories)
+		let annotation = BusinessMapAnnotation.generate(from: business)
 		let placemark = MKPlacemark(coordinate: annotation.coordinate)
 		let mapItem = MKMapItem(placemark: placemark)
 		mapItem.name = annotation.title
