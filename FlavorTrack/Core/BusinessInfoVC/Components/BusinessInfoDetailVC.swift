@@ -42,7 +42,7 @@ private extension BusinessInfoDetailVC {
 		view.addAllSubviewsAndDisableAutoConstraints(locationIcon, locationLabel, phoneIcon,
 													 phoneLabel, tagIcon, tagLabel, linkIcon, linkLabel)
 		
-		let _imgAndTextPadding: CGFloat = 12.0
+		let _imgAndTextPadding: CGFloat = 6.0
 		let _infoPiecePadding: CGFloat = 16.0
 		let _iconSize: CGFloat = 18.0
 		let _infoTextHeight: CGFloat = 22.0
@@ -90,11 +90,13 @@ private extension BusinessInfoDetailVC {
 	}
 	
 	private func configUIElements() -> Void {
+		// Location
 		locationIcon.image = SFSymbols.mapPin
 		locationIcon.tintColor = .secondaryLabel
 		locationLabel.text = business.location?.displayAddress?.joined(separator: ", ") ?? "No address information available"
 		locationLabel.isUserInteractionEnabled = false
 		
+		// Phone
 		phoneIcon.image = SFSymbols.phone
 		phoneIcon.tintColor = .secondaryLabel
 		switch business.displayPhone {
@@ -105,21 +107,25 @@ private extension BusinessInfoDetailVC {
 		}
 		phoneLabel.isUserInteractionEnabled = false
 		
+		// Tags
 		tagIcon.image = SFSymbols.tag
 		tagIcon.tintColor = .secondaryLabel
 		
 		var tags: [String] = []
 		for eachCategory in business.categories {
-			if let tag = eachCategory.title {
-				tags.append(tag)
-			}
+			if let tag = eachCategory.title { tags.append(tag) }
 		}
 		tagLabel.text = tags.joined(separator: ", ")
 		
+		// Link
 		linkIcon.image = SFSymbols.globe
 		linkIcon.tintColor = .secondaryLabel
-		linkLabel.text = business.yelpUrl
-		linkLabel.isUserInteractionEnabled = false
+		
+		let yelpAttrString = NSMutableAttributedString(string: "Find out more on Yelp")
+		yelpAttrString.addAttribute(.link, value: business.yelpUrl, range: NSRange(location: 0, length: yelpAttrString.length))
+		linkLabel.attributedText = yelpAttrString
+		linkLabel.isUserInteractionEnabled = true
+		linkLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(yelpUrlTapped)))
 	}
 	
 	private func configAccessibilityForIcons() -> Void {
@@ -138,5 +144,11 @@ private extension BusinessInfoDetailVC {
 		linkIcon.isAccessibilityElement = true
 		linkIcon.accessibilityLabel = "Website URL"
 		linkIcon.accessibilityValue = "icon"
+	}
+	
+	@objc
+	private func yelpUrlTapped(_ sender: UITapGestureRecognizer) {
+		guard let url = URL(string: business.yelpUrl) else { return }
+		UIApplication.shared.open(url)
 	}
 }
