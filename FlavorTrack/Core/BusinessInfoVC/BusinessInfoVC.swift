@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import MapKit
 
 class BusinessInfoVC: UIViewController, LoadableScreen {
 
@@ -17,8 +18,7 @@ class BusinessInfoVC: UIViewController, LoadableScreen {
 	
 	private var headerView: UIView!
 	private var detailView: UIView!
-	private var mapView: FTMapView!
-	private var callToActionButton: FTButton!
+	private var mapHostingView: UIView!
 	
 	init(for business: Business) {
 		super.init(nibName: nil, bundle: nil)
@@ -27,8 +27,7 @@ class BusinessInfoVC: UIViewController, LoadableScreen {
 		self.contentView = .init()
 		self.headerView = .init()
 		self.detailView = .init()
-		self.mapView = .init()
-		self.callToActionButton = .init(withTitle: "Take me there!")
+		self.mapHostingView = .init()
 	}
 	
 	required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
@@ -48,7 +47,7 @@ private extension BusinessInfoVC {
 	private func layoutUIElements() -> Void {
 		view.addAllSubviewsAndDisableAutoConstraints(scrollView)
 		scrollView.addAllSubviewsAndDisableAutoConstraints(contentView)
-		contentView.addAllSubviewsAndDisableAutoConstraints(headerView, detailView, mapView, callToActionButton)
+		contentView.addAllSubviewsAndDisableAutoConstraints(headerView, detailView, mapHostingView)
 		
 		let _edgePadding: CGFloat = 12.0
 		let _itemPadding: CGFloat = 24.0
@@ -75,15 +74,10 @@ private extension BusinessInfoVC {
 			detailView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -(_edgePadding)),
 			detailView.heightAnchor.constraint(equalToConstant: 120),
 			
-			mapView.topAnchor.constraint(equalTo: detailView.bottomAnchor, constant: _itemPadding),
-			mapView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: _edgePadding),
-			mapView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -(_edgePadding)),
-			mapView.heightAnchor.constraint(equalToConstant: 280),
-			
-			callToActionButton.topAnchor.constraint(equalTo: mapView.bottomAnchor, constant: 12),
-			callToActionButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: _edgePadding),
-			callToActionButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -(_edgePadding)),
-			callToActionButton.heightAnchor.constraint(equalToConstant: 44)
+			mapHostingView.topAnchor.constraint(equalTo: detailView.bottomAnchor, constant: _itemPadding),
+			mapHostingView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: _edgePadding),
+			mapHostingView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -(_edgePadding)),
+			mapHostingView.heightAnchor.constraint(equalToConstant: 340)
 		])
 		
 		
@@ -94,29 +88,19 @@ private extension BusinessInfoVC {
 	private func configUIElements(for business: Business) -> Void {
 		addChildController(BusinessInfoHeaderVC(for: business), to: headerView)
 		addChildController(BusinessInfoDetailVC(for: business), to: detailView)
-		addChildController(BusinessInfoMapVC(for: business), to: mapView)
-		
-		callToActionButton.addTarget(self, action: #selector(_didTapActionButton), for: .touchUpInside)
+		addChildController(BusinessInfoMapVC(for: business, delegate: self), to: mapHostingView)
 	}
 	
 	@objc
 	private func _dismissVC() { dismiss(animated: true) }
 }
 
-// MARK: - Navigation Button
-
-import MapKit
-
-private extension BusinessInfoVC {
-
-	@objc
-	private func _didTapActionButton() -> Void {
-		didRequestMapNavigation(to: business)
-	}
-	
-	/// Could've used the Delegation pattern to hand off responsibility to `BusinessInfoMapVC`,
-	/// but I decided to code this way in `BusinessInfoVC` for code reusability of `BusinessMapAnnotation` type.
-	private func didRequestMapNavigation(to business: Business) -> Void {
+extension BusinessInfoVC: MapNavigationRequestDelegate {
+	/// Showcasing knowledge about using Delegate pattern to communicate between view controllers.
+	///
+	/// If I were to improve this further, I'd like to not go with delegation and move
+	/// this method (and call to action button) to my map VC for separation of concerns.
+	func didRequestMapNavigation(to business: Business) -> Void {
 		let annotation = BusinessMapAnnotation(
 			title: business.name,
 			coordinate: .init(latitude: business.coordinates.latitude, longitude: business.coordinates.longitude),
