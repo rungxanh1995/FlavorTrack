@@ -8,6 +8,7 @@
 import UIKit
 
 enum SFSymbols {
+	static let star: UIImage = .init(systemName: "star")!
 	static let starFilled: UIImage = .init(systemName: "star.fill")!
 	static let mapPin: UIImage = .init(systemName: "mappin.and.ellipse")!
 	static let distance: UIImage = .init(systemName: "arrow.triangle.swap")!

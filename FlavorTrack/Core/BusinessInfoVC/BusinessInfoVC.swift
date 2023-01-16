@@ -38,12 +38,30 @@ class BusinessInfoVC: UIViewController, LoadableScreen {
 		view.backgroundColor = .systemBackground
 		title = business.name
 		
+		configNavigationBarButtons()
 		layoutUIElements()
 		configUIElements(for: business)
     }
 }
 
 private extension BusinessInfoVC {
+	
+	private func configNavigationBarButtons() -> Void {
+		let doneBarBtn: UIBarButtonItem = .init(barButtonSystemItem: .done, target: self, action: #selector(_dismissVC))
+		doneBarBtn.isAccessibilityElement = true
+		doneBarBtn.accessibilityLabel = "Done and dismiss view"
+		doneBarBtn.accessibilityValue = "button"
+		navigationItem.setRightBarButtonItems([doneBarBtn], animated: true)
+		
+		// TODO: Wire to persistence
+		let favBarBtn: UIBarButtonItem = .init(image: SFSymbols.star, style: .plain,
+											   target: self, action: nil)
+		favBarBtn.isAccessibilityElement = true
+		favBarBtn.accessibilityLabel = "Add to favorites"
+		favBarBtn.accessibilityValue = "button"
+		navigationItem.setLeftBarButtonItems([favBarBtn], animated: true)
+	}
+	
 	private func layoutUIElements() -> Void {
 		view.addAllSubviewsAndDisableAutoConstraints(scrollView)
 		scrollView.addAllSubviewsAndDisableAutoConstraints(contentView)
@@ -79,10 +97,6 @@ private extension BusinessInfoVC {
 			mapHostingView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -(_edgePadding)),
 			mapHostingView.heightAnchor.constraint(equalToConstant: 340)
 		])
-		
-		
-		let doneBarBtn: UIBarButtonItem = .init(barButtonSystemItem: .done, target: self, action: #selector(_dismissVC))
-		navigationItem.setRightBarButtonItems([doneBarBtn], animated: true)
 	}
 	
 	private func configUIElements(for business: Business) -> Void {
