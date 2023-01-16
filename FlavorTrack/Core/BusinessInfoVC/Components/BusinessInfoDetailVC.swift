@@ -110,12 +110,7 @@ private extension BusinessInfoDetailVC {
 		// Tags
 		tagIcon.image = SFSymbols.tag
 		tagIcon.tintColor = .secondaryLabel
-		
-		var tags: [String] = []
-		for eachCategory in business.categories {
-			if let tag = eachCategory.title { tags.append(tag) }
-		}
-		tagLabel.text = tags.joined(separator: ", ")
+		tagLabel.text = business.readableCategories
 		
 		// Link
 		linkIcon.image = SFSymbols.globe
