@@ -57,6 +57,34 @@ final class BusinessDataService {
 		}
 		.resume()
 	}
+	
+	@available(iOS 15.0, *)
+	func getBusinessList(nearby address: String, businessType: String) async throws -> [Business] {
+		let endpoint = "\(ApiConstants.Endpoint.base)?\(ApiConstants.Endpoint.addAddress(address.percentEncoded))&\(ApiConstants.Endpoint.addBusinessType(businessType.percentEncoded))&\(ApiConstants.Endpoint.defaultRadiusAndBatchLimit)"
+		
+		guard let url = URL(string: endpoint) else { throw NetworkError.invalidInputs }
+		
+		var request = URLRequest(url: url, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 10.0)
+		let headers = [
+			"accept": "application/json",
+			"Authorization": ApiConstants.authString
+		]
+		request.allHTTPHeaderFields = headers
+		request.httpMethod = "GET"
+		
+		let (data, response) = try await URLSession.shared.data(for: request)
+		guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+			throw NetworkError.invalidResponse
+		}
+		
+		do {
+			let decoder = JSONDecoder()
+			let rawResponse = try decoder.decode(RawServerResponse.self, from: data)
+			return rawResponse.businesses
+		} catch {
+			throw NetworkError.invalidData
+		}
+	}
 }
 
 extension BusinessDataService {
