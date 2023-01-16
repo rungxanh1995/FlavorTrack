@@ -36,7 +36,7 @@ private extension BusinessInfoMapVC {
 	
 	private func layoutUI() -> Void {
 		view.addAllSubviewsAndDisableAutoConstraints(mapView)
-		mapView.isUserInteractionEnabled = false
+		mapView.isUserInteractionEnabled = true
 		
 		NSLayoutConstraint.activate([
 			mapView.topAnchor.constraint(equalTo: view.topAnchor),
