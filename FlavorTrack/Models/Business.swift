@@ -44,7 +44,7 @@ struct Category: Codable, Hashable {
 
 // MARK: - Center
 struct Coordinates: Codable, Hashable {
-	var latitude, longitude: Double?
+	var latitude, longitude: Double
 }
 
 // MARK: - Location
