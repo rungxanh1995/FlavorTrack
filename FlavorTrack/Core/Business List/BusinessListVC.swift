@@ -85,15 +85,13 @@ private extension BusinessListVC {
 			dismissLoadingOverlay()
 		}
 		
-		BusinessDataService.shared.getBusinessList(nearby: location, businessType: businessType) { [weak self] result in
-			guard let self else { return }
-						
-			switch result {
-			case .success(let nextList):
-					self.updateUI(with: nextList)
-			case .failure(let error):
-				self.presentAlert(message: error.rawValue)
-			}
+		Task {
+			do {
+				let result = try await BusinessDataService.shared.getBusinessList(nearby: location, businessType: businessType)
+				updateUI(with: result)
+			} catch let error as BusinessDataService.NetworkError {
+				presentAlert(message: error.rawValue)
+			} catch { presentDefaultAlert() }
 		}
 	}
 	
