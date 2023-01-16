@@ -25,8 +25,8 @@ class FTSecondaryTitleLabel: UILabel {
 		disableAutoConstraints()
 
 		textColor = .secondaryLabel
-		adjustsFontSizeToFitWidth = true
-		minimumScaleFactor = 0.9
+		adjustsFontSizeToFitWidth = false
+		minimumScaleFactor = 1.0
 		lineBreakMode = .byTruncatingTail
 	}
 	
