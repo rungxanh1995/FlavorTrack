@@ -25,6 +25,8 @@ class FavoriteListCell: UITableViewCell {
 		
 		let _cellPadding: CGFloat = 12.0
 		addAllSubviewsAndDisableAutoConstraints(profileImageView, nameLabel)
+
+		#warning("Using a hack for nameLabel to workaround accessoryType overlapping it")
 		NSLayoutConstraint.activate([
 			profileImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
 			profileImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: _cellPadding),
@@ -33,7 +35,7 @@ class FavoriteListCell: UITableViewCell {
 			
 			nameLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
 			nameLabel.leadingAnchor.constraint(equalTo: profileImageView.trailingAnchor, constant: _cellPadding),
-			nameLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -(_cellPadding)),
+			nameLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -(_cellPadding * 4)),
 			nameLabel.heightAnchor.constraint(equalToConstant: 20)
 		])
 	}
