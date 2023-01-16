@@ -26,7 +26,7 @@ class FTMapView: UIView {
 	}
 	
 	override func layoutSubviews() {
-		layer.cornerRadius = 12.0
+		layer.cornerRadius = 8.0
 	}
 	
 	override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {

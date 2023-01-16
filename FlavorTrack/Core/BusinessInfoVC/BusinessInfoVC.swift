@@ -18,6 +18,7 @@ class BusinessInfoVC: UIViewController, LoadableScreen {
 	private var headerView: UIView!
 	private var detailView: UIView!
 	private var mapView: FTMapView!
+	private var callToActionButton: FTButton!
 	
 	init(for business: Business) {
 		super.init(nibName: nil, bundle: nil)
@@ -27,6 +28,7 @@ class BusinessInfoVC: UIViewController, LoadableScreen {
 		self.headerView = .init()
 		self.detailView = .init()
 		self.mapView = .init()
+		self.callToActionButton = .init(withTitle: "Take me there!")
 	}
 	
 	required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
@@ -46,7 +48,7 @@ private extension BusinessInfoVC {
 	private func layoutUIElements() -> Void {
 		view.addAllSubviewsAndDisableAutoConstraints(scrollView)
 		scrollView.addAllSubviewsAndDisableAutoConstraints(contentView)
-		contentView.addAllSubviewsAndDisableAutoConstraints(headerView, detailView, mapView)
+		contentView.addAllSubviewsAndDisableAutoConstraints(headerView, detailView, mapView, callToActionButton)
 		
 		let _edgePadding: CGFloat = 12.0
 		let _itemPadding: CGFloat = 24.0
@@ -61,22 +63,27 @@ private extension BusinessInfoVC {
 			contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
 			contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
 			contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
-			contentView.heightAnchor.constraint(equalToConstant: 600),
+			contentView.heightAnchor.constraint(equalToConstant: 650),
 			
 			headerView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: _edgePadding),
 			headerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: _edgePadding),
 			headerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -(_edgePadding)),
-			headerView.heightAnchor.constraint(equalToConstant: 120),
+			headerView.heightAnchor.constraint(equalToConstant: 100),
 			
 			detailView.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: _itemPadding),
 			detailView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: _edgePadding),
 			detailView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -(_edgePadding)),
-			detailView.heightAnchor.constraint(equalToConstant: 140),
+			detailView.heightAnchor.constraint(equalToConstant: 120),
 			
 			mapView.topAnchor.constraint(equalTo: detailView.bottomAnchor, constant: _itemPadding),
 			mapView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: _edgePadding),
 			mapView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -(_edgePadding)),
 			mapView.heightAnchor.constraint(equalToConstant: 280),
+			
+			callToActionButton.topAnchor.constraint(equalTo: mapView.bottomAnchor, constant: 12),
+			callToActionButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: _edgePadding),
+			callToActionButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -(_edgePadding)),
+			callToActionButton.heightAnchor.constraint(equalToConstant: 44)
 		])
 		
 		
