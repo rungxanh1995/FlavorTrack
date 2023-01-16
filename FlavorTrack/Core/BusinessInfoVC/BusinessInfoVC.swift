@@ -17,6 +17,7 @@ class BusinessInfoVC: UIViewController, LoadableScreen {
 	
 	private var headerView: UIView!
 	private var detailView: UIView!
+	private var mapView: FTMapView!
 	
 	init(for business: Business) {
 		super.init(nibName: nil, bundle: nil)
@@ -25,6 +26,7 @@ class BusinessInfoVC: UIViewController, LoadableScreen {
 		self.contentView = .init()
 		self.headerView = .init()
 		self.detailView = .init()
+		self.mapView = .init()
 	}
 	
 	required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
@@ -44,7 +46,7 @@ private extension BusinessInfoVC {
 	private func layoutUIElements() -> Void {
 		view.addAllSubviewsAndDisableAutoConstraints(scrollView)
 		scrollView.addAllSubviewsAndDisableAutoConstraints(contentView)
-		contentView.addAllSubviewsAndDisableAutoConstraints(headerView, detailView)
+		contentView.addAllSubviewsAndDisableAutoConstraints(headerView, detailView, mapView)
 		
 		let _edgePadding: CGFloat = 12.0
 		let _itemPadding: CGFloat = 24.0
@@ -69,7 +71,12 @@ private extension BusinessInfoVC {
 			detailView.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: _itemPadding),
 			detailView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: _edgePadding),
 			detailView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -(_edgePadding)),
-			detailView.heightAnchor.constraint(equalToConstant: 120),
+			detailView.heightAnchor.constraint(equalToConstant: 140),
+			
+			mapView.topAnchor.constraint(equalTo: detailView.bottomAnchor, constant: _itemPadding),
+			mapView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: _edgePadding),
+			mapView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -(_edgePadding)),
+			mapView.heightAnchor.constraint(equalToConstant: 280),
 		])
 		
 		
@@ -80,6 +87,7 @@ private extension BusinessInfoVC {
 	private func configUIElements(for business: Business) -> Void {
 		addChildController(BusinessInfoHeaderVC(for: business), to: headerView)
 		addChildController(BusinessInfoDetailVC(for: business), to: detailView)
+		addChildController(BusinessInfoMapVC(for: business), to: mapView)
 	}
 	
 	@objc

@@ -31,6 +31,14 @@ struct Business: Codable {
 		case displayPhone = "display_phone"
 		case distance = "distance"
 	}
+	
+	var readableCategories: String {
+		var tags: [String] = []
+		for eachCategory in categories {
+			if let tag = eachCategory.title { tags.append(tag) }
+		}
+		return tags.joined(separator: ", ")
+	}
 }
 
 extension Business: Hashable {
