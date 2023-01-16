@@ -65,6 +65,8 @@ extension FavoriteListVC: UITableViewDelegate, UITableViewDataSource {
 	}
 	
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		tableView.deselectRow(at: indexPath, animated: true)
+		
 		let selectedFavorite = allFavorites[indexPath.row]
 		let targetVC: BusinessInfoVC = .init(for: selectedFavorite)
 		let navController: UINavigationController = .init(rootViewController: targetVC)
