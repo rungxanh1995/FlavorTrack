@@ -95,8 +95,35 @@ private extension BusinessInfoVC {
 		addChildController(BusinessInfoHeaderVC(for: business), to: headerView)
 		addChildController(BusinessInfoDetailVC(for: business), to: detailView)
 		addChildController(BusinessInfoMapVC(for: business), to: mapView)
+		
+		callToActionButton.addTarget(self, action: #selector(_didTapActionButton), for: .touchUpInside)
 	}
 	
 	@objc
 	private func _dismissVC() { dismiss(animated: true) }
+}
+
+// MARK: - Navigation Button
+
+import MapKit
+
+private extension BusinessInfoVC {
+
+	@objc
+	private func _didTapActionButton() -> Void {
+		didRequestMapNavigation(to: business)
+	}
+	
+	/// Could've used the Delegation pattern to hand off responsibility to `BusinessInfoMapVC`,
+	/// but I decided to code this way in `BusinessInfoVC` for code reusability of `BusinessMapAnnotation` type.
+	private func didRequestMapNavigation(to business: Business) -> Void {
+		let annotation = BusinessMapAnnotation(
+			title: business.name,
+			coordinate: .init(latitude: business.coordinates.latitude, longitude: business.coordinates.longitude),
+			info: business.readableCategories)
+		let placemark = MKPlacemark(coordinate: annotation.coordinate)
+		let mapItem = MKMapItem(placemark: placemark)
+		mapItem.name = annotation.title
+		mapItem.openInMaps()
+	}
 }
