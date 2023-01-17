@@ -16,7 +16,6 @@ class BusinessListVC: UIViewController, LoadableScreen {
 	private var businessList: [Business] = []
 	private var filteredBusinessList: [Business] = []
 	
-	private var isLoadingMoreBusinesses: Bool = false
 	private var isInSearchMode: Bool = false
 	
 	internal var containerView: UIView!
@@ -77,18 +76,14 @@ private extension BusinessListVC {
 	}
 	
 	private func getBusinessList(for businessType: String, near location: String) -> Void {
-		isLoadingMoreBusinesses = true
 		showLoadingOverlay()
 		
-		defer {
-			isLoadingMoreBusinesses = false
-			dismissLoadingOverlay()
-		}
+		defer { dismissLoadingOverlay() }
 		
 		Task {
 			do {
 				let result = try await BusinessDataService.shared.getBusinessList(nearby: location, businessType: businessType)
-				updateUI(with: result)
+				updateUI(with: result.sorted { $0.distance < $1.distance } )
 			} catch let error as BusinessDataService.NetworkError {
 				presentAlert(message: error.rawValue)
 			} catch { presentDefaultAlert() }
