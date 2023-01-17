@@ -22,6 +22,7 @@ class FavoriteListCell: UITableViewCell {
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
 		configure()
+		configAccessibilityForIcons()
 	}
 	
 	private func configure() -> Void {
@@ -79,6 +80,16 @@ class FavoriteListCell: UITableViewCell {
 		tagIcon.image = SFSymbols.tag
 		tagIcon.tintColor = UIColor.theme.accent
 		tagLabel.text = favorite.readableCategories
+	}
+	
+	private func configAccessibilityForIcons() -> Void {
+		ratingIcon.isAccessibilityElement = true
+		ratingIcon.accessibilityLabel = "Rating"
+		ratingIcon.accessibilityValue = "icon"
+		
+		tagIcon.isAccessibilityElement = true
+		tagIcon.accessibilityLabel = "Categories"
+		tagIcon.accessibilityValue = "icon"
 	}
 	
 	required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
