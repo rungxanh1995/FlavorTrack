@@ -88,7 +88,7 @@ private extension BusinessListVC {
 		Task {
 			do {
 				let result = try await BusinessDataService.shared.getBusinessList(nearby: location, businessType: businessType)
-				updateUI(with: result)
+				updateUI(with: result.sorted { $0.distance < $1.distance } )
 			} catch let error as BusinessDataService.NetworkError {
 				presentAlert(message: error.rawValue)
 			} catch { presentDefaultAlert() }
