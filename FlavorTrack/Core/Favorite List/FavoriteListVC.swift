@@ -47,7 +47,7 @@ class FavoriteListVC: UIViewController {
 		
 		tableView.delegate = self
 		tableView.dataSource = self
-		tableView.rowHeight = 80
+		tableView.rowHeight = 72
 		tableView.register(FavoriteListCell.self, forCellReuseIdentifier: FavoriteListCell.REUSE_ID)
 	}
 }
