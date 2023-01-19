@@ -33,7 +33,7 @@ class BusinessListVC: UIViewController, LoadableScreen {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		view.backgroundColor = .systemBackground
-		title = "\(businessType.capitalized) near \(searchedLocation.capitalized(with: .current))"
+		title = businessType.capitalized.localizedDynamicString(near: searchedLocation.capitalized)
 		
 		configCollectionView()
 		configDataSource()
@@ -69,7 +69,7 @@ private extension BusinessListVC {
 	
 	private func configSearchBar() -> Void {
 		let searchController: UISearchController = .init()
-		searchController.searchBar.placeholder = "Search a name"
+		searchController.searchBar.placeholder = NSLocalizedString("Search a name", comment: "The placeholder of search bar in Business list controller")
 		searchController.searchResultsUpdater = self
 		navigationItem.hidesSearchBarWhenScrolling = false
 		navigationItem.searchController = searchController

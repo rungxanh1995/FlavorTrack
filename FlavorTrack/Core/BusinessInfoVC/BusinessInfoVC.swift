@@ -21,7 +21,7 @@ class BusinessInfoVC: UIViewController, LoadableScreen {
 	private var detailView: UIView!
 	private var mapHostingView: UIView!
 	
-	init(for business: Business, near location: String = "searched location") {
+	init(for business: Business, near location: String = NSLocalizedString("searched location", comment: "The default distance-from location info of a business")) {
 		super.init(nibName: nil, bundle: nil)
 		self.business = business
 		self.searchedLocation = location
@@ -51,15 +51,13 @@ private extension BusinessInfoVC {
 	private func configNavigationBarButtons() -> Void {
 		let doneBarBtn: UIBarButtonItem = .init(barButtonSystemItem: .done, target: self, action: #selector(_dismissVC))
 		doneBarBtn.isAccessibilityElement = true
-		doneBarBtn.accessibilityLabel = "Done and dismiss view"
-		doneBarBtn.accessibilityValue = "button"
+		doneBarBtn.accessibilityLabel = NSLocalizedString("Done and dismiss view", comment: "The accessibility label of the Done navigation bar button")
 		navigationItem.setRightBarButtonItems([doneBarBtn], animated: true)
 		
 		let favBarBtn: UIBarButtonItem = .init(image: SFSymbols.star, style: .plain,
 											   target: self, action: #selector(_favoriteButtonClicked))
 		favBarBtn.isAccessibilityElement = true
-		favBarBtn.accessibilityLabel = "Add to favorites"
-		favBarBtn.accessibilityValue = "button"
+		favBarBtn.accessibilityLabel = NSLocalizedString("Add to favorites", comment: "The accessibility label of the Favorite navigation bar button")
 		navigationItem.setLeftBarButtonItems([favBarBtn], animated: true)
 	}
 	
@@ -119,7 +117,8 @@ private extension BusinessInfoVC {
 		let savingError = PersistenceManager.updateWith(business, forAction: .add)
 		switch savingError {
 			case .none:
-				presentAlert(title: "Favorited!", message: "Successfully saved \(business.name) to favorites")
+				presentAlert(title: "Favorited!",
+							 message: business.name.localizedDynamicString(fromKey: "Successfully saved %@ to favorites"))
 			case .some(let error):
 				presentAlert(title: "Uh-oh!", message: error.rawValue)
 		}

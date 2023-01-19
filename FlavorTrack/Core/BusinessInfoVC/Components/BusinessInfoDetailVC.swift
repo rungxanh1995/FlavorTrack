@@ -93,19 +93,17 @@ private extension BusinessInfoDetailVC {
 		// Location
 		locationIcon.image = SFSymbols.mapPin
 		locationIcon.tintColor = .secondaryLabel
-		locationLabel.text = business.location?.displayAddress?.joined(separator: ", ") ?? "No address information available"
-		locationLabel.isUserInteractionEnabled = false
+		locationLabel.text = business.location?.displayAddress?.joined(separator: ", ") ?? NSLocalizedString("No address information available", comment: "")
 		
 		// Phone
 		phoneIcon.image = SFSymbols.phone
 		phoneIcon.tintColor = .secondaryLabel
 		switch business.displayPhone {
 			case .none:
-				phoneLabel.text = "No phone number available"
+				phoneLabel.text = NSLocalizedString("No phone number available", comment: "")
 			case .some(let phoneNo):
-				phoneLabel.text = phoneNo.isEmpty ? "No phone number available" : phoneNo
+				phoneLabel.text = phoneNo.isEmpty ? NSLocalizedString("No phone number available", comment: "") : phoneNo
 		}
-		phoneLabel.isUserInteractionEnabled = false
 		
 		// Tags
 		tagIcon.image = SFSymbols.tag
@@ -116,7 +114,7 @@ private extension BusinessInfoDetailVC {
 		linkIcon.image = SFSymbols.globe
 		linkIcon.tintColor = .secondaryLabel
 		
-		let yelpAttrString = NSMutableAttributedString(string: "Find out more on Yelp")
+		let yelpAttrString = NSMutableAttributedString(string: NSLocalizedString("Find out more on Yelp", comment: ""))
 		yelpAttrString.addAttribute(.link, value: business.yelpUrl, range: NSRange(location: 0, length: yelpAttrString.length))
 		linkLabel.attributedText = yelpAttrString
 		linkLabel.isUserInteractionEnabled = true
@@ -125,19 +123,19 @@ private extension BusinessInfoDetailVC {
 	
 	private func configAccessibilityForIcons() -> Void {
 		locationIcon.isAccessibilityElement = true
-		locationIcon.accessibilityLabel = "Location"
+		locationIcon.accessibilityLabel = NSLocalizedString("Location", comment: "")
 		locationIcon.accessibilityValue = "icon"
 		
 		phoneIcon.isAccessibilityElement = true
-		phoneIcon.accessibilityLabel = "Phone number"
+		phoneIcon.accessibilityLabel = NSLocalizedString("Phone number", comment: "")
 		phoneIcon.accessibilityValue = "icon"
 		
 		tagIcon.isAccessibilityElement = true
-		tagIcon.accessibilityLabel = "Categories"
+		tagIcon.accessibilityLabel = NSLocalizedString("Categories", comment: "")
 		tagIcon.accessibilityValue = "icon"
 		
 		linkIcon.isAccessibilityElement = true
-		linkIcon.accessibilityLabel = "Website URL"
+		linkIcon.accessibilityLabel = NSLocalizedString("Website URL", comment: "")
 		linkIcon.accessibilityValue = "icon"
 	}
 	

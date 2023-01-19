@@ -25,14 +25,14 @@ class FTTabBar: UITabBarController {
 	
 	private func createSearchNavigationController() -> UINavigationController {
 		let searchVC = SearchVC()
-		searchVC.title = "Search"
+		searchVC.title = NSLocalizedString("Search", comment: "The title of Search view controller")
 		searchVC.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 0)
 		return UINavigationController(rootViewController: searchVC)
 	}
 	
 	private func _createFavListNavigationController() -> UINavigationController {
 		let favListVC = FavoriteListVC()
-		favListVC.title = "Favorites"
+		favListVC.title = NSLocalizedString("Favorites", comment: "The title of Favorites view controller")
 		favListVC.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 1)
 		return UINavigationController(rootViewController: favListVC)
 	}

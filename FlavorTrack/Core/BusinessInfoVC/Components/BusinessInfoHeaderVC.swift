@@ -118,14 +118,14 @@ private extension BusinessInfoHeaderVC {
 		
 		distanceIcon.image = SFSymbols.distance
 		distanceIcon.tintColor = .secondaryLabel
-		distanceLabel.text = business.distance <= 1_000 ?
-			"\(business.distance.noDecimalDigits)m from \(searchedLocation!)" :
-			"\((business.distance/1000).withOneDecimalDigit)km from \(searchedLocation!)"
+		distanceLabel.text = business.distance.localizedDynamicString(awayFrom: searchedLocation)
 		distanceLabel.setNew(color: business.distance <= 1_000 ? .systemGreen : .systemOrange)
 		
 		openStatusIcon.image = business.isClosed ? SFSymbols.doorClosed : SFSymbols.doorOpen
 		openStatusIcon.tintColor = .secondaryLabel
-		openStatusLabel.text = business.isClosed ? "Closed from Public" : "Open to Public"
+		openStatusLabel.text = business.isClosed ?
+			NSLocalizedString("Closed from Public", comment: "") :
+			NSLocalizedString("Open to Public", comment: "")
 		openStatusLabel.setNew(color: business.isClosed ? .systemPink : .systemGreen)
 		
 		costIcon.image = SFSymbols.money
@@ -141,19 +141,32 @@ private extension BusinessInfoHeaderVC {
 	
 	private func configAccessibilityForIcons() -> Void {
 		distanceIcon.isAccessibilityElement = true
-		distanceIcon.accessibilityLabel = "Distance"
+		distanceIcon.accessibilityLabel = NSLocalizedString("Distance", comment: "The noun")
 		distanceIcon.accessibilityValue = "icon"
 		
 		openStatusIcon.isAccessibilityElement = true
-		openStatusIcon.accessibilityLabel = "Is open or closed?"
+		openStatusIcon.accessibilityLabel = NSLocalizedString("Is open or closed?", comment: "")
 		openStatusIcon.accessibilityValue = "icon"
 		
 		costIcon.isAccessibilityElement = true
-		costIcon.accessibilityLabel = "Cost"
+		costIcon.accessibilityLabel = NSLocalizedString("Cost", comment: "The noun")
 		costIcon.accessibilityValue = "icon"
 		
 		ratingIcon.isAccessibilityElement = true
-		ratingIcon.accessibilityLabel = "Rating"
+		ratingIcon.accessibilityLabel = NSLocalizedString("Rating", comment: "The noun")
 		ratingIcon.accessibilityValue = "icon"
 	}
+	
+//	private func localizedDynamicString(for distance: Double) -> String {
+//		var localizedString = NSLocalizedString("", comment: "")
+//		var formattedDistance = ""
+//		if business.distance <= 1_000 {
+//			localizedString = NSLocalizedString("%@m from %@", comment: "X meters from location")
+//			formattedDistance = business.distance.noDecimalDigits
+//		} else {
+//			localizedString = NSLocalizedString("%@km from %@", comment: "X kilometers from location")
+//			formattedDistance = (business.distance/1000).withOneDecimalDigit
+//		}
+//		return String(format: localizedString, formattedDistance, searchedLocation)
+//	}
 }

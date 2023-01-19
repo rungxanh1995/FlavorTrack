@@ -41,7 +41,7 @@ class FTTextField: UITextField {
 		autocapitalizationType = .none
 		returnKeyType = .go
 		clearButtonMode = .whileEditing
-		self.placeholder = placeholder
+		self.placeholder = NSLocalizedString(placeholder ?? "", comment: "")
 	}
 
 	override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {

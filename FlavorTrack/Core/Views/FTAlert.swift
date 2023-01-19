@@ -64,7 +64,7 @@ private extension FTAlert {
 	
 	private func configTitleLabel() -> Void {
 		containerView.addSubview(titleLabel)
-		titleLabel.text = titleString ?? "Something went wrong"
+		titleLabel.text = NSLocalizedString(titleString ?? "Something went wrong", comment: "The text of the alert title")
 		
 		NSLayoutConstraint.activate([
 			titleLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: _padding),
@@ -76,7 +76,7 @@ private extension FTAlert {
 	
 	private func configAlertButton() -> Void {
 		containerView.addSubview(alertButton)
-		alertButton.setTitle(buttonTitleString ?? "OK", for: .normal)
+		alertButton.setTitle(NSLocalizedString(buttonTitleString ?? "OK", comment: "The text of the alert button title"), for: .normal)
 		alertButton.addTarget(self, action: #selector(_dismissAlert), for: .touchUpInside)
 		
 		NSLayoutConstraint.activate([
@@ -94,7 +94,7 @@ private extension FTAlert {
 	/// so please call it after you have already configured the other 2 views
 	private func configMessageLabel() -> Void {
 		containerView.addSubview(messageLabel)
-		messageLabel.text = messageString ?? "Unable to complete request"
+		messageLabel.text = NSLocalizedString(messageString ?? "Unable to complete request", comment: "The text of the alert message")
 		messageLabel.numberOfLines = 4
 		
 		NSLayoutConstraint.activate([

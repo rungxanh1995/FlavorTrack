@@ -20,7 +20,7 @@ class GHEmptyStateView: UIView {
 	convenience init(message: String) {
 		self.init(frame: .zero)
 		backgroundColor = .systemBackground
-		messageLabel.text = message
+		messageLabel.text = NSLocalizedString(message, comment: "The text of the empty state view")
 	}
 	
 	private func _configure() -> Void {

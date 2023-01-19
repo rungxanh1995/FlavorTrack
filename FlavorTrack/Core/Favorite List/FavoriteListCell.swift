@@ -84,11 +84,11 @@ class FavoriteListCell: UITableViewCell {
 	
 	private func configAccessibilityForIcons() -> Void {
 		ratingIcon.isAccessibilityElement = true
-		ratingIcon.accessibilityLabel = "Rating"
+		ratingIcon.accessibilityLabel = NSLocalizedString("Rating", comment: "The noun")
 		ratingIcon.accessibilityValue = "icon"
 		
 		tagIcon.isAccessibilityElement = true
-		tagIcon.accessibilityLabel = "Categories"
+		tagIcon.accessibilityLabel = NSLocalizedString("Categories", comment: "")
 		tagIcon.accessibilityValue = "icon"
 	}
 	
