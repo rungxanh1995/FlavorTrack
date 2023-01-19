@@ -204,11 +204,7 @@
 				2CC75D3029736C7A00584F45 /* Core */,
 				2CC75D2F29736C7400584F45 /* Extensions */,
 				2C5521D92973717B007BA86A /* Utilities */,
-				2CC75D0829735FFB00584F45 /* Assets.xcassets */,
-				2CC75D0A29735FFB00584F45 /* LaunchScreen.storyboard */,
-				2CC75D0D29735FFB00584F45 /* Info.plist */,
-				2CC75CFF29735FF900584F45 /* AppDelegate.swift */,
-				2CC75D0129735FF900584F45 /* SceneDelegate.swift */,
+				2CDA7BB72978D60A00A33848 /* Resources */,
 			);
 			path = FlavorTrack;
 			sourceTree = "<group>";
@@ -245,6 +241,18 @@
 				2CC75D0329735FF900584F45 /* SearchVC.swift */,
 			);
 			path = Search;
+			sourceTree = "<group>";
+		};
+		2CDA7BB72978D60A00A33848 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				2CC75D0829735FFB00584F45 /* Assets.xcassets */,
+				2CC75D0A29735FFB00584F45 /* LaunchScreen.storyboard */,
+				2CC75D0D29735FFB00584F45 /* Info.plist */,
+				2CC75CFF29735FF900584F45 /* AppDelegate.swift */,
+				2CC75D0129735FF900584F45 /* SceneDelegate.swift */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		2CDD54EE29739C7E000EF4BB /* Business List */ = {
@@ -513,7 +521,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8R3P49X4ZM;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = FlavorTrack/Info.plist;
+				INFOPLIST_FILE = FlavorTrack/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -542,7 +550,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8R3P49X4ZM;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = FlavorTrack/Info.plist;
+				INFOPLIST_FILE = FlavorTrack/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
