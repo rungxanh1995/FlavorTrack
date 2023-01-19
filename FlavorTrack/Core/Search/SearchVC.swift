@@ -21,6 +21,8 @@ final class SearchVC: UIViewController {
 		super.viewDidLoad()
 		view.backgroundColor = .systemBackground
 		view.addAllSubviewsAndDisableAutoConstraints(logoImageView, locationTextField, businessTypeTextField, callToActionButton)
+		title = NSLocalizedString("Search", comment: "")
+		
 		configLogoImageView()
 		configTextFields()
 		configActionButton()
