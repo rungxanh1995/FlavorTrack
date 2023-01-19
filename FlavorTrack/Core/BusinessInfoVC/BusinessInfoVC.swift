@@ -68,32 +68,23 @@ private extension BusinessInfoVC {
 		
 		let edgePadding: CGFloat = 12.0
 		let itemPadding: CGFloat = 24.0
+		
+		scrollView.pinToEdges(of: view)
+		contentView.pinToEdges(of: scrollView)
+		headerView.constrainToUpperHalf(of: contentView, padding: edgePadding)
+		detailView.constrainToLeadingAndTrailingAnchors(of: contentView, padding: edgePadding)
+		mapHostingView.constrainToLowerHalf(of: contentView, padding: edgePadding)
+		
+		// extra constraints
 		NSLayoutConstraint.activate([
-			scrollView.topAnchor.constraint(equalTo: view.topAnchor),
-			scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-			scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-			scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-			
-			contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
-			contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
-			contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
-			contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
 			contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
 			contentView.heightAnchor.constraint(equalToConstant: 660),
 			
-			headerView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: edgePadding),
-			headerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: edgePadding),
-			headerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -(edgePadding)),
 			headerView.heightAnchor.constraint(equalToConstant: 120),
 			
 			detailView.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: itemPadding),
-			detailView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: edgePadding),
-			detailView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -(edgePadding)),
 			detailView.heightAnchor.constraint(equalToConstant: 120),
 			
-			mapHostingView.topAnchor.constraint(equalTo: detailView.bottomAnchor, constant: itemPadding),
-			mapHostingView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: edgePadding),
-			mapHostingView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -(edgePadding)),
 			mapHostingView.heightAnchor.constraint(equalToConstant: 340)
 		])
 	}

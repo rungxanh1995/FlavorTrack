@@ -44,16 +44,12 @@ private extension BusinessInfoMapVC {
 	
 	private func layoutUI() -> Void {
 		view.addAllSubviewsAndDisableAutoConstraints(mapView, callToActionButton)
+		mapView.constrainToUpperHalf(of: view)
+		callToActionButton.constrainToLowerHalf(of: view)
 		
+		// extra constraints
 		NSLayoutConstraint.activate([
-			mapView.topAnchor.constraint(equalTo: view.topAnchor),
-			mapView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-			mapView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
 			mapView.heightAnchor.constraint(equalToConstant: 280),
-			
-			callToActionButton.topAnchor.constraint(equalTo: mapView.bottomAnchor, constant: 12),
-			callToActionButton.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-			callToActionButton.trailingAnchor.constraint(equalTo: view.trailingAnchor),
 			callToActionButton.heightAnchor.constraint(equalToConstant: 44)
 		])
 	}
@@ -76,11 +72,11 @@ private extension BusinessInfoMapVC {
 	}
 	
 	private func configActionButton() -> Void {
-		callToActionButton.addTarget(self, action: #selector(_didTapActionButton), for: .touchUpInside)
+		callToActionButton.addTarget(self, action: #selector(didTapActionButton), for: .touchUpInside)
 	}
 	
 	@objc
-	private func _didTapActionButton() -> Void {
+	private func didTapActionButton() -> Void {
 		delegate.didRequestMapNavigation(to: business)
 	}
 }

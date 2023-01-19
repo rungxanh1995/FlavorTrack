@@ -53,11 +53,17 @@ private extension BusinessInfoHeaderVC {
 		let infoPiecePadding: CGFloat = 10.0
 		let iconSize: CGFloat = 18.0
 		let infoTextHeight: CGFloat = 22.0
+		
+		profileImageView.constrainSizeToConstant(90.0)
+		distanceIcon.constrainSizeToConstant(iconSize)
+		openStatusIcon.constrainSizeToConstant(iconSize)
+		costIcon.constrainSizeToConstant(iconSize)
+		ratingIcon.constrainSizeToConstant(iconSize)
+		
+		// extra constraints
 		NSLayoutConstraint.activate([
 			profileImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 16),
 			profileImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-			profileImageView.widthAnchor.constraint(equalToConstant: 90),
-			profileImageView.heightAnchor.constraint(equalToConstant: 90),
 			
 			nameLabel.topAnchor.constraint(equalTo: view.topAnchor),
 			nameLabel.leadingAnchor.constraint(equalTo: profileImageView.trailingAnchor, constant: imgAndTextPadding),
@@ -66,8 +72,6 @@ private extension BusinessInfoHeaderVC {
 			
 			distanceIcon.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: infoPiecePadding),
 			distanceIcon.leadingAnchor.constraint(equalTo: profileImageView.trailingAnchor, constant: imgAndTextPadding),
-			distanceIcon.widthAnchor.constraint(equalToConstant: iconSize),
-			distanceIcon.heightAnchor.constraint(equalToConstant: iconSize),
 			
 			distanceLabel.centerYAnchor.constraint(equalTo: distanceIcon.centerYAnchor),
 			distanceLabel.leadingAnchor.constraint(equalTo: distanceIcon.trailingAnchor, constant: 6),
@@ -76,8 +80,6 @@ private extension BusinessInfoHeaderVC {
 			
 			openStatusIcon.topAnchor.constraint(equalTo: distanceIcon.bottomAnchor, constant: infoPiecePadding),
 			openStatusIcon.leadingAnchor.constraint(equalTo: profileImageView.trailingAnchor, constant: imgAndTextPadding),
-			openStatusIcon.widthAnchor.constraint(equalToConstant: iconSize),
-			openStatusIcon.heightAnchor.constraint(equalToConstant: iconSize),
 			
 			openStatusLabel.centerYAnchor.constraint(equalTo: openStatusIcon.centerYAnchor),
 			openStatusLabel.leadingAnchor.constraint(equalTo: openStatusIcon.trailingAnchor, constant: 6),
@@ -86,8 +88,6 @@ private extension BusinessInfoHeaderVC {
 
 			costIcon.leadingAnchor.constraint(equalTo: profileImageView.trailingAnchor, constant: imgAndTextPadding),
 			costIcon.topAnchor.constraint(equalTo: openStatusIcon.bottomAnchor, constant: infoPiecePadding),
-			costIcon.widthAnchor.constraint(equalToConstant: iconSize),
-			costIcon.heightAnchor.constraint(equalToConstant: iconSize),
 			
 			costLabel.centerYAnchor.constraint(equalTo: costIcon.centerYAnchor),
 			costLabel.leadingAnchor.constraint(equalTo: costIcon.trailingAnchor, constant: 6),
@@ -101,8 +101,6 @@ private extension BusinessInfoHeaderVC {
 			
 			ratingIcon.centerYAnchor.constraint(equalTo: costIcon.centerYAnchor),
 			ratingIcon.leadingAnchor.constraint(equalTo: costLabel.trailingAnchor, constant: infoPiecePadding),
-			ratingIcon.widthAnchor.constraint(equalToConstant: iconSize),
-			ratingIcon.heightAnchor.constraint(equalToConstant: iconSize),
 			
 			ratingLabel.centerYAnchor.constraint(equalTo: ratingIcon.centerYAnchor),
 			ratingLabel.leadingAnchor.constraint(equalTo: ratingIcon.trailingAnchor, constant: 6),
@@ -156,17 +154,4 @@ private extension BusinessInfoHeaderVC {
 		ratingIcon.accessibilityLabel = NSLocalizedString("Rating", comment: "The noun")
 		ratingIcon.accessibilityValue = "icon"
 	}
-	
-//	private func localizedDynamicString(for distance: Double) -> String {
-//		var localizedString = NSLocalizedString("", comment: "")
-//		var formattedDistance = ""
-//		if business.distance <= 1_000 {
-//			localizedString = NSLocalizedString("%@m from %@", comment: "X meters from location")
-//			formattedDistance = business.distance.noDecimalDigits
-//		} else {
-//			localizedString = NSLocalizedString("%@km from %@", comment: "X kilometers from location")
-//			formattedDistance = (business.distance/1000).withOneDecimalDigit
-//		}
-//		return String(format: localizedString, formattedDistance, searchedLocation)
-//	}
 }

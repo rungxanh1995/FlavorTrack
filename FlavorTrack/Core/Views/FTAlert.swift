@@ -20,7 +20,7 @@ final class FTAlert: UIViewController {
 	private var messageString: String?
 	private var buttonTitleString: String?
 	
-	private let edgePadding: CGFloat = 20.0
+	private let edgePadding: CGFloat = 16.0
 	
 	init(title: String, message: String, btnTitle: String) {
 		super.init(nibName: nil, bundle: nil)
@@ -53,12 +53,11 @@ final class FTAlert: UIViewController {
 private extension FTAlert {
 	private func configContainerView() -> Void {
 		view.addSubview(containerView)
+		containerView.pinToCenter(of: view)
 		
 		NSLayoutConstraint.activate([
-			containerView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-			containerView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-			containerView.widthAnchor.constraint(equalToConstant: 280),
-			containerView.heightAnchor.constraint(equalToConstant: 220)
+			containerView.widthAnchor.constraint(equalToConstant: 320),
+			containerView.heightAnchor.constraint(equalToConstant: 240)
 		])
 	}
 	
@@ -66,12 +65,8 @@ private extension FTAlert {
 		containerView.addSubview(titleLabel)
 		titleLabel.text = NSLocalizedString(titleString ?? "Something went wrong", comment: "The text of the alert title")
 		
-		NSLayoutConstraint.activate([
-			titleLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: edgePadding),
-			titleLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: edgePadding),
-			titleLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -(edgePadding)),
-			titleLabel.heightAnchor.constraint(equalToConstant: 28)
-		])
+		titleLabel.constrainToUpperHalf(of: containerView, padding: edgePadding)
+		NSLayoutConstraint.activate([titleLabel.heightAnchor.constraint(equalToConstant: 28)])
 	}
 	
 	private func configAlertButton() -> Void {
@@ -79,12 +74,8 @@ private extension FTAlert {
 		alertButton.setTitle(NSLocalizedString(buttonTitleString ?? "OK", comment: "The text of the alert button title"), for: .normal)
 		alertButton.addTarget(self, action: #selector(_dismissAlert), for: .touchUpInside)
 		
-		NSLayoutConstraint.activate([
-			alertButton.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -(edgePadding)),
-			alertButton.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: edgePadding),
-			alertButton.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -(edgePadding)),
-			alertButton.heightAnchor.constraint(equalToConstant: 48)
-		])
+		alertButton.constrainToLowerHalf(of: containerView, padding: edgePadding)
+		NSLayoutConstraint.activate([alertButton.heightAnchor.constraint(equalToConstant: 48)])
 	}
 	
 	@objc
@@ -97,10 +88,10 @@ private extension FTAlert {
 		messageLabel.text = NSLocalizedString(messageString ?? "Unable to complete request", comment: "The text of the alert message")
 		messageLabel.numberOfLines = 4
 		
+		messageLabel.constrainToLeadingAndTrailingAnchors(of: containerView, padding: edgePadding)
+		// extra constraints
 		NSLayoutConstraint.activate([
 			messageLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 8),
-			messageLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: edgePadding),
-			messageLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -(edgePadding)),
 			messageLabel.bottomAnchor.constraint(equalTo: alertButton.topAnchor, constant: -(8))
 		])
 	}

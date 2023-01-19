@@ -28,15 +28,13 @@ final class BusinessCell: UICollectionViewCell {
 	private func configure() -> Void {
 		addAllSubviews(profileImageView, businessNameLabel)
 		
+		profileImageView.constrainToUpperHalf(of: self, padding: edgePadding)
+		businessNameLabel.constrainToLeadingAndTrailingAnchors(of: self, padding: edgePadding)
+		
+		// extra constraints
 		NSLayoutConstraint.activate([
-			profileImageView.topAnchor.constraint(equalTo: topAnchor, constant: edgePadding),
-			profileImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: edgePadding),
-			profileImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -(edgePadding)),
 			profileImageView.heightAnchor.constraint(equalTo: profileImageView.widthAnchor),
-			
 			businessNameLabel.topAnchor.constraint(equalTo: profileImageView.bottomAnchor, constant: 12),
-			businessNameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: edgePadding),
-			businessNameLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -(edgePadding)),
 			businessNameLabel.heightAnchor.constraint(equalToConstant: 20)
 		])
 	}

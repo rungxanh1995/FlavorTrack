@@ -33,10 +33,11 @@ final class GHEmptyStateView: UIView {
 		logoImageView.image = AppImages.emptyStateLogo
 		logoImageView.disableAutoConstraints()
 		
+		messageLabel.constrainToLeadingAndTrailingAnchors(of: self, padding: 40.0)
+		
+		// extra constraints
 		NSLayoutConstraint.activate([
 			messageLabel.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -150),
-			messageLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 40),
-			messageLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40),
 			messageLabel.heightAnchor.constraint(equalToConstant: 200),
 			
 			logoImageView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 1.3),

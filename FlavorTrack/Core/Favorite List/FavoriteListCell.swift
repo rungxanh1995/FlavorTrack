@@ -35,12 +35,17 @@ final class FavoriteListCell: UITableViewCell {
 		let infoPiecePadding: CGFloat = 10.0
 		let iconSize: CGFloat = 16.0
 		let infoTextHeight: CGFloat = 18.0
-		#warning("Using a hack for nameLabel & tagLabel to workaround accessoryType overlapping them")
+		
+		
+		profileImageView.constrainSizeToConstant(44.0)
+		ratingIcon.constrainSizeToConstant(iconSize)
+		tagIcon.constrainSizeToConstant(iconSize)
+		
+		// extra constraints
+		// using a hack for nameLabel & tagLabel trailing padding to workaround accessoryType overlapping them
 		NSLayoutConstraint.activate([
 			profileImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
 			profileImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: cellPadding),
-			profileImageView.heightAnchor.constraint(equalToConstant: 44),
-			profileImageView.widthAnchor.constraint(equalToConstant: 44),
 			
 			nameLabel.topAnchor.constraint(equalTo: profileImageView.topAnchor),
 			nameLabel.leadingAnchor.constraint(equalTo: profileImageView.trailingAnchor, constant: imgAndTextPadding),
@@ -49,8 +54,6 @@ final class FavoriteListCell: UITableViewCell {
 			
 			ratingIcon.bottomAnchor.constraint(equalTo: profileImageView.bottomAnchor),
 			ratingIcon.leadingAnchor.constraint(equalTo: profileImageView.trailingAnchor, constant: imgAndTextPadding),
-			ratingIcon.widthAnchor.constraint(equalToConstant: iconSize),
-			ratingIcon.heightAnchor.constraint(equalToConstant: iconSize),
 			
 			ratingLabel.centerYAnchor.constraint(equalTo: ratingIcon.centerYAnchor),
 			ratingLabel.leadingAnchor.constraint(equalTo: ratingIcon.trailingAnchor, constant: 6),
@@ -59,8 +62,6 @@ final class FavoriteListCell: UITableViewCell {
 			
 			tagIcon.centerYAnchor.constraint(equalTo: ratingIcon.centerYAnchor),
 			tagIcon.leadingAnchor.constraint(equalTo: ratingLabel.trailingAnchor, constant: infoPiecePadding),
-			tagIcon.widthAnchor.constraint(equalToConstant: iconSize),
-			tagIcon.heightAnchor.constraint(equalToConstant: iconSize),
 			
 			tagLabel.centerYAnchor.constraint(equalTo: tagIcon.centerYAnchor),
 			tagLabel.leadingAnchor.constraint(equalTo: tagIcon.trailingAnchor, constant: 6),
