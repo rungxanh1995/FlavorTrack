@@ -7,7 +7,7 @@
 
 import UIKit
 
-class BusinessInfoHeaderVC: UIViewController {
+final class BusinessInfoHeaderVC: UIViewController {
 	
 	private let profileImageView: FTProfileImageView = .init(frame: .zero)
 	private let nameLabel: FTPrimaryTitleLabel = .init(textAlignment: .natural, ofSize: 28)

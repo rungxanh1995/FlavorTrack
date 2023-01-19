@@ -7,7 +7,7 @@
 
 import UIKit
 
-class BusinessInfoDetailVC: UIViewController {
+final class BusinessInfoDetailVC: UIViewController {
 	
 	private let locationIcon: UIImageView = .init()
 	private let locationLabel: FTBodyLabel = .init(textAlignment: .left)

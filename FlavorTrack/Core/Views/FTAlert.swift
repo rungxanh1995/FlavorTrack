@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FTAlert: UIViewController {
+final class FTAlert: UIViewController {
 	
 	required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
 

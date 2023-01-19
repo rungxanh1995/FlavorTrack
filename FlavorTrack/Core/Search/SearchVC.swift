@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SearchVC: UIViewController {
+final class SearchVC: UIViewController {
 
 	private let logoImageView: UIImageView = .init()
 	private let locationTextField: FTTextField = .init(withPlaceholder: "Your current whereabouts?")

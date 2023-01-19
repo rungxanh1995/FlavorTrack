@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FavoriteListVC: UIViewController {
+final class FavoriteListVC: UIViewController {
 	private var allFavorites: [Business] = []
 	private var tableView: UITableView!
 	

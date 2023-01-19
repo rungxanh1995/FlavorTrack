@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FavoriteListCell: UITableViewCell {
+final class FavoriteListCell: UITableViewCell {
 
 	/// Reusable identifier of the cell
 	static let REUSE_ID = "FavoriteCell"

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FTAlertContainerView: UIView {
+final class FTAlertContainerView: UIView {
 
 	required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
 

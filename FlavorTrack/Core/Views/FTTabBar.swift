@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FTTabBar: UITabBarController {
+final class FTTabBar: UITabBarController {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FTTextField: UITextField {
+final class FTTextField: UITextField {
 
 	required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
 	

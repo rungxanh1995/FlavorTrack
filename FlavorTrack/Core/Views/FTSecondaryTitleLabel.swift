@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FTSecondaryTitleLabel: UILabel {
+final class FTSecondaryTitleLabel: UILabel {
 
 	required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
 

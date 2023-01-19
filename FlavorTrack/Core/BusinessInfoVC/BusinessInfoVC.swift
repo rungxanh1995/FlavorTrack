@@ -8,7 +8,7 @@
 import UIKit
 import MapKit
 
-class BusinessInfoVC: UIViewController, LoadableScreen {
+final class BusinessInfoVC: UIViewController, LoadableScreen {
 
 	internal var containerView: UIView!
 	private var business: Business!

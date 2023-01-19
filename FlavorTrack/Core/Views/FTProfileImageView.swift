@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FTProfileImageView: UIImageView {
+final class FTProfileImageView: UIImageView {
 	
 	required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
 

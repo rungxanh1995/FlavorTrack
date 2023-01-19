@@ -12,7 +12,7 @@ internal protocol MapNavigationRequestDelegate: AnyObject {
 	func didRequestMapNavigation(to business: Business) -> Void
 }
 
-class BusinessInfoMapVC: UIViewController {
+final class BusinessInfoMapVC: UIViewController {
 	
 	private var mapView: MKMapView!
 	private var callToActionButton: FTButton!

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class GHEmptyStateView: UIView {
+final class GHEmptyStateView: UIView {
 
 	private let logoImageView: UIImageView = .init()
 	private let messageLabel: FTPrimaryTitleLabel = .init(textAlignment: .center, ofSize: 24)
