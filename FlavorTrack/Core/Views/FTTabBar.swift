@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FTTabBar: UITabBarController {
+final class FTTabBar: UITabBarController {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -19,7 +19,7 @@ class FTTabBar: UITabBarController {
 	private func configTabBarController() -> Void {
 		viewControllers = [
 			createSearchNavigationController(),
-			_createFavListNavigationController()
+			createFavListNavigationController()
 		]
 	}
 	
@@ -30,7 +30,7 @@ class FTTabBar: UITabBarController {
 		return UINavigationController(rootViewController: searchVC)
 	}
 	
-	private func _createFavListNavigationController() -> UINavigationController {
+	private func createFavListNavigationController() -> UINavigationController {
 		let favListVC = FavoriteListVC()
 		favListVC.title = "Favorites"
 		favListVC.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 1)

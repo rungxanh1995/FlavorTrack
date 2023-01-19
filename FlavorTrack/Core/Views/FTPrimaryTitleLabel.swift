@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FTPrimaryTitleLabel: UILabel {
+final class FTPrimaryTitleLabel: UILabel {
 
 	required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
 

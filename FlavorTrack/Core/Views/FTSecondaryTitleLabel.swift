@@ -7,13 +7,13 @@
 
 import UIKit
 
-class FTSecondaryTitleLabel: UILabel {
+final class FTSecondaryTitleLabel: UILabel {
 
 	required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
 
 	override init(frame: CGRect) {
 		super.init(frame: frame)
-		_configure()
+		configure()
 	}
 	
 	convenience init(ofSize size: CGFloat) {
@@ -21,7 +21,7 @@ class FTSecondaryTitleLabel: UILabel {
 		font = .systemFont(ofSize: size, weight: .medium)
 	}
 	
-	private func _configure() {
+	private func configure() {
 		disableAutoConstraints()
 
 		textColor = .secondaryLabel

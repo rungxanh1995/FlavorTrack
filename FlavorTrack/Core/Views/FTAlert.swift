@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FTAlert: UIViewController {
+final class FTAlert: UIViewController {
 	
 	required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
 
@@ -87,8 +87,7 @@ private extension FTAlert {
 		])
 	}
 	
-	@objc
-	private func _dismissAlert() -> Void { dismiss(animated: true) }
+	@objc private func _dismissAlert() -> Void { dismiss(animated: true) }
 	
 	/// Message would fill up the space between title and action button,
 	/// so please call it after you have already configured the other 2 views

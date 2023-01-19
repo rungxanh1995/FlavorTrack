@@ -7,15 +7,15 @@
 
 import UIKit
 
-class SearchVC: UIViewController {
+final class SearchVC: UIViewController {
 
 	private let logoImageView: UIImageView = .init()
 	private let locationTextField: FTTextField = .init(withPlaceholder: "Your current whereabouts?")
 	private let businessTypeTextField: FTTextField = .init(withPlaceholder: "What are you craving?")
 	private let callToActionButton: FTButton = .init(withTitle: "Let's go!")
 	
-	private var _isLocationEntered: Bool { !locationTextField.text!.isEmpty }
-	private var _isBusinessTypeEntered: Bool { !businessTypeTextField.text!.isEmpty }
+	private var isLocationEntered: Bool { !locationTextField.text!.isEmpty }
+	private var isBusinessTypeEntered: Bool { !businessTypeTextField.text!.isEmpty }
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -75,15 +75,14 @@ private extension SearchVC {
 		callToActionButton.addTarget(self, action: #selector(validateAndPushBusinessListVC), for: .touchUpInside)
 	}
 	
-	@objc
-	private func validateAndPushBusinessListVC() -> Void {
-		guard _isLocationEntered else {
+	@objc private func validateAndPushBusinessListVC() -> Void {
+		guard isLocationEntered else {
 			presentAlert(title: "No Location?",
 						 message: "Please enter an address, road name, or zip code, etc.\nThen we can search 😊.")
 			return
 		}
 		
-		guard _isBusinessTypeEntered else {
+		guard isBusinessTypeEntered else {
 			presentAlert(title: "Unsure what to find?",
 						 message: "Please enter a business type.\nHow about 'vietnamese', or 'coffee'?")
 			return

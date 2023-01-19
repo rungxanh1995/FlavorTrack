@@ -7,7 +7,7 @@
 
 import UIKit
 
-class BusinessListVC: UIViewController, LoadableScreen {
+final class BusinessListVC: UIViewController, LoadableScreen {
 	
 	internal enum CollectionSection { case main }
 	

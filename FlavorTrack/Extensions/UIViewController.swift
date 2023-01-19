@@ -10,8 +10,7 @@ import UIKit
 // MARK: - Keyboard
 extension UIViewController {
 	
-	@objc
-	func keyboardWillShow(sender notification: NSNotification) {
+	@objc func keyboardWillShow(sender notification: NSNotification) {
 		guard let userInfo = notification.userInfo,
 			  let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue,
 			  let currentTextField = UIResponder.currentFirst() as? UITextField else { return }
@@ -29,8 +28,7 @@ extension UIViewController {
 		}
 	}
 	
-	@objc
-	func keyboardWillHide(sender notification: NSNotification) {
+	@objc func keyboardWillHide(sender notification: NSNotification) {
 		view.frame.origin.y = 0
 	}
 }

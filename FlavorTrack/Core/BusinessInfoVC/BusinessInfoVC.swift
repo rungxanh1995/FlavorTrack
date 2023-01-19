@@ -8,7 +8,7 @@
 import UIKit
 import MapKit
 
-class BusinessInfoVC: UIViewController, LoadableScreen {
+final class BusinessInfoVC: UIViewController, LoadableScreen {
 
 	internal var containerView: UIView!
 	private var business: Business!
@@ -49,14 +49,14 @@ class BusinessInfoVC: UIViewController, LoadableScreen {
 private extension BusinessInfoVC {
 	
 	private func configNavigationBarButtons() -> Void {
-		let doneBarBtn: UIBarButtonItem = .init(barButtonSystemItem: .done, target: self, action: #selector(_dismissVC))
+		let doneBarBtn: UIBarButtonItem = .init(barButtonSystemItem: .done, target: self, action: #selector(dismissVC))
 		doneBarBtn.isAccessibilityElement = true
 		doneBarBtn.accessibilityLabel = "Done and dismiss view"
 		doneBarBtn.accessibilityValue = "button"
 		navigationItem.setRightBarButtonItems([doneBarBtn], animated: true)
 		
 		let favBarBtn: UIBarButtonItem = .init(image: SFSymbols.star, style: .plain,
-											   target: self, action: #selector(_favoriteButtonClicked))
+											   target: self, action: #selector(favoriteButtonClicked))
 		favBarBtn.isAccessibilityElement = true
 		favBarBtn.accessibilityLabel = "Add to favorites"
 		favBarBtn.accessibilityValue = "button"
@@ -68,8 +68,8 @@ private extension BusinessInfoVC {
 		scrollView.addAllSubviewsAndDisableAutoConstraints(contentView)
 		contentView.addAllSubviewsAndDisableAutoConstraints(headerView, detailView, mapHostingView)
 		
-		let _edgePadding: CGFloat = 12.0
-		let _itemPadding: CGFloat = 24.0
+		let edgePadding: CGFloat = 12.0
+		let itemPadding: CGFloat = 24.0
 		NSLayoutConstraint.activate([
 			scrollView.topAnchor.constraint(equalTo: view.topAnchor),
 			scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -83,19 +83,19 @@ private extension BusinessInfoVC {
 			contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
 			contentView.heightAnchor.constraint(equalToConstant: 660),
 			
-			headerView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: _edgePadding),
-			headerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: _edgePadding),
-			headerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -(_edgePadding)),
+			headerView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: edgePadding),
+			headerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: edgePadding),
+			headerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -(edgePadding)),
 			headerView.heightAnchor.constraint(equalToConstant: 120),
 			
-			detailView.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: _itemPadding),
-			detailView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: _edgePadding),
-			detailView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -(_edgePadding)),
+			detailView.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: itemPadding),
+			detailView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: edgePadding),
+			detailView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -(edgePadding)),
 			detailView.heightAnchor.constraint(equalToConstant: 120),
 			
-			mapHostingView.topAnchor.constraint(equalTo: detailView.bottomAnchor, constant: _itemPadding),
-			mapHostingView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: _edgePadding),
-			mapHostingView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -(_edgePadding)),
+			mapHostingView.topAnchor.constraint(equalTo: detailView.bottomAnchor, constant: itemPadding),
+			mapHostingView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: edgePadding),
+			mapHostingView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -(edgePadding)),
 			mapHostingView.heightAnchor.constraint(equalToConstant: 340)
 		])
 	}
@@ -108,11 +108,9 @@ private extension BusinessInfoVC {
 		addChildController(BusinessInfoMapVC(for: business, delegate: self), to: mapHostingView)
 	}
 	
-	@objc
-	private func _dismissVC() { dismiss(animated: true) }
+	@objc private func dismissVC() { dismiss(animated: true) }
 	
-	@objc
-	private func _favoriteButtonClicked() -> Void {
+	@objc private func favoriteButtonClicked() -> Void {
 		showLoadingOverlay()
 		defer { dismissLoadingOverlay() }
 		

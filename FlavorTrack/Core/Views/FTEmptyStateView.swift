@@ -7,14 +7,14 @@
 
 import UIKit
 
-class GHEmptyStateView: UIView {
+final class GHEmptyStateView: UIView {
 
 	private let logoImageView: UIImageView = .init()
 	private let messageLabel: FTPrimaryTitleLabel = .init(textAlignment: .center, ofSize: 24)
 	
 	override init(frame: CGRect) {
 		super.init(frame: frame)
-		_configure()
+		configure()
 	}
 	
 	convenience init(message: String) {
@@ -23,7 +23,7 @@ class GHEmptyStateView: UIView {
 		messageLabel.text = message
 	}
 	
-	private func _configure() -> Void {
+	private func configure() -> Void {
 		addSubview(logoImageView)
 		addSubview(messageLabel)
 		
