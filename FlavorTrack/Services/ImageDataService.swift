@@ -11,12 +11,12 @@ final class ImageDataService {
 	static let shared: ImageDataService = .init()
 	private init() {}
 	
-	private let _cache: NSCache<NSString, UIImage> = .init()
+	private let cache: NSCache<NSString, UIImage> = .init()
 
 	func downloadOrGetFromCache(from urlString: String, onComplete: @escaping (UIImage?) -> Void) -> Void {
 		let _cacheKey = NSString(string: urlString)
 		// Access cached image if exists
-		if let image = _cache.object(forKey: _cacheKey) {
+		if let image = cache.object(forKey: _cacheKey) {
 			onComplete(image)
 			return
 		}
@@ -32,7 +32,7 @@ final class ImageDataService {
 				onComplete(nil)
 				return
 			}
-			self?._cache.setObject(image, forKey: _cacheKey)
+			self?.cache.setObject(image, forKey: _cacheKey)
 			onComplete(image)
 		}
 		.resume()
@@ -42,7 +42,7 @@ final class ImageDataService {
 	func downloadOrGetFromCache(from urlString: String) async -> UIImage? {
 		let _cacheKey = NSString(string: urlString)
 		// Access cached image if exists
-		if let image = _cache.object(forKey: _cacheKey) { return image }
+		if let image = cache.object(forKey: _cacheKey) { return image }
 		
 		// otherwise, download and cache
 		guard let url = URL(string: urlString) else { return nil }
@@ -50,7 +50,7 @@ final class ImageDataService {
 		do {
 			let (data, _) = try await URLSession.shared.data(from: url)
 			guard let image = UIImage(data: data) else { return nil }
-			_cache.setObject(image, forKey: _cacheKey)
+			cache.setObject(image, forKey: _cacheKey)
 			return image
 		} catch { return nil }
 	}

@@ -13,7 +13,7 @@ final class FTBodyLabel: UILabel {
 
 	override init(frame: CGRect) {
 		super.init(frame: frame)
-		_configure()
+		configure()
 	}
 	
 	convenience init(textAlignment: NSTextAlignment) {
@@ -22,7 +22,7 @@ final class FTBodyLabel: UILabel {
 		self.font = .preferredFont(forTextStyle: .body)
 	}
 	
-	private func _configure() {
+	private func configure() {
 		disableAutoConstraints()
 
 		textColor = .secondaryLabel

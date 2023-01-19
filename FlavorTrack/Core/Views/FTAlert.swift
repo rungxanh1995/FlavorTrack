@@ -20,7 +20,7 @@ final class FTAlert: UIViewController {
 	private var messageString: String?
 	private var buttonTitleString: String?
 	
-	private let _padding: CGFloat = 20.0
+	private let edgePadding: CGFloat = 20.0
 	
 	init(title: String, message: String, btnTitle: String) {
 		super.init(nibName: nil, bundle: nil)
@@ -67,9 +67,9 @@ private extension FTAlert {
 		titleLabel.text = NSLocalizedString(titleString ?? "Something went wrong", comment: "The text of the alert title")
 		
 		NSLayoutConstraint.activate([
-			titleLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: _padding),
-			titleLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: _padding),
-			titleLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -(_padding)),
+			titleLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: edgePadding),
+			titleLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: edgePadding),
+			titleLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -(edgePadding)),
 			titleLabel.heightAnchor.constraint(equalToConstant: 28)
 		])
 	}
@@ -80,9 +80,9 @@ private extension FTAlert {
 		alertButton.addTarget(self, action: #selector(_dismissAlert), for: .touchUpInside)
 		
 		NSLayoutConstraint.activate([
-			alertButton.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -(_padding)),
-			alertButton.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: _padding),
-			alertButton.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -(_padding)),
+			alertButton.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -(edgePadding)),
+			alertButton.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: edgePadding),
+			alertButton.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -(edgePadding)),
 			alertButton.heightAnchor.constraint(equalToConstant: 48)
 		])
 	}
@@ -99,8 +99,8 @@ private extension FTAlert {
 		
 		NSLayoutConstraint.activate([
 			messageLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 8),
-			messageLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: _padding),
-			messageLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -(_padding)),
+			messageLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: edgePadding),
+			messageLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -(edgePadding)),
 			messageLabel.bottomAnchor.constraint(equalTo: alertButton.topAnchor, constant: -(8))
 		])
 	}

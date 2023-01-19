@@ -14,7 +14,7 @@ final class GHEmptyStateView: UIView {
 	
 	override init(frame: CGRect) {
 		super.init(frame: frame)
-		_configure()
+		configure()
 	}
 	
 	convenience init(message: String) {
@@ -23,7 +23,7 @@ final class GHEmptyStateView: UIView {
 		messageLabel.text = NSLocalizedString(message, comment: "The text of the empty state view")
 	}
 	
-	private func _configure() -> Void {
+	private func configure() -> Void {
 		addSubview(logoImageView)
 		addSubview(messageLabel)
 		

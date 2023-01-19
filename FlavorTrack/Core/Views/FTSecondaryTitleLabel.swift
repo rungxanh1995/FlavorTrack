@@ -13,7 +13,7 @@ final class FTSecondaryTitleLabel: UILabel {
 
 	override init(frame: CGRect) {
 		super.init(frame: frame)
-		_configure()
+		configure()
 	}
 	
 	convenience init(ofSize size: CGFloat) {
@@ -21,7 +21,7 @@ final class FTSecondaryTitleLabel: UILabel {
 		font = .systemFont(ofSize: size, weight: .medium)
 	}
 	
-	private func _configure() {
+	private func configure() {
 		disableAutoConstraints()
 
 		textColor = .secondaryLabel

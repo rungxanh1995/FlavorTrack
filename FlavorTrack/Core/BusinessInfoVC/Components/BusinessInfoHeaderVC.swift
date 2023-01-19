@@ -49,10 +49,10 @@ private extension BusinessInfoHeaderVC {
 													 distanceLabel, openStatusIcon, openStatusLabel,
 													 costIcon, costLabel, underlyingCostLabel, ratingIcon, ratingLabel)
 		
-		let _imgAndTextPadding: CGFloat = 12.0
-		let _infoPiecePadding: CGFloat = 10.0
-		let _iconSize: CGFloat = 18.0
-		let _infoTextHeight: CGFloat = 22.0
+		let imgAndTextPadding: CGFloat = 12.0
+		let infoPiecePadding: CGFloat = 10.0
+		let iconSize: CGFloat = 18.0
+		let infoTextHeight: CGFloat = 22.0
 		NSLayoutConstraint.activate([
 			profileImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 16),
 			profileImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -60,54 +60,54 @@ private extension BusinessInfoHeaderVC {
 			profileImageView.heightAnchor.constraint(equalToConstant: 90),
 			
 			nameLabel.topAnchor.constraint(equalTo: view.topAnchor),
-			nameLabel.leadingAnchor.constraint(equalTo: profileImageView.trailingAnchor, constant: _imgAndTextPadding),
+			nameLabel.leadingAnchor.constraint(equalTo: profileImageView.trailingAnchor, constant: imgAndTextPadding),
 			nameLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor),
 			nameLabel.heightAnchor.constraint(equalToConstant: 32),
 			
-			distanceIcon.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: _infoPiecePadding),
-			distanceIcon.leadingAnchor.constraint(equalTo: profileImageView.trailingAnchor, constant: _imgAndTextPadding),
-			distanceIcon.widthAnchor.constraint(equalToConstant: _iconSize),
-			distanceIcon.heightAnchor.constraint(equalToConstant: _iconSize),
+			distanceIcon.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: infoPiecePadding),
+			distanceIcon.leadingAnchor.constraint(equalTo: profileImageView.trailingAnchor, constant: imgAndTextPadding),
+			distanceIcon.widthAnchor.constraint(equalToConstant: iconSize),
+			distanceIcon.heightAnchor.constraint(equalToConstant: iconSize),
 			
 			distanceLabel.centerYAnchor.constraint(equalTo: distanceIcon.centerYAnchor),
 			distanceLabel.leadingAnchor.constraint(equalTo: distanceIcon.trailingAnchor, constant: 6),
 			distanceLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-			distanceLabel.heightAnchor.constraint(equalToConstant: _infoTextHeight),
+			distanceLabel.heightAnchor.constraint(equalToConstant: infoTextHeight),
 			
-			openStatusIcon.topAnchor.constraint(equalTo: distanceIcon.bottomAnchor, constant: _infoPiecePadding),
-			openStatusIcon.leadingAnchor.constraint(equalTo: profileImageView.trailingAnchor, constant: _imgAndTextPadding),
-			openStatusIcon.widthAnchor.constraint(equalToConstant: _iconSize),
-			openStatusIcon.heightAnchor.constraint(equalToConstant: _iconSize),
+			openStatusIcon.topAnchor.constraint(equalTo: distanceIcon.bottomAnchor, constant: infoPiecePadding),
+			openStatusIcon.leadingAnchor.constraint(equalTo: profileImageView.trailingAnchor, constant: imgAndTextPadding),
+			openStatusIcon.widthAnchor.constraint(equalToConstant: iconSize),
+			openStatusIcon.heightAnchor.constraint(equalToConstant: iconSize),
 			
 			openStatusLabel.centerYAnchor.constraint(equalTo: openStatusIcon.centerYAnchor),
 			openStatusLabel.leadingAnchor.constraint(equalTo: openStatusIcon.trailingAnchor, constant: 6),
 			openStatusLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-			openStatusLabel.heightAnchor.constraint(equalToConstant: _infoTextHeight),
+			openStatusLabel.heightAnchor.constraint(equalToConstant: infoTextHeight),
 
-			costIcon.leadingAnchor.constraint(equalTo: profileImageView.trailingAnchor, constant: _imgAndTextPadding),
-			costIcon.topAnchor.constraint(equalTo: openStatusIcon.bottomAnchor, constant: _infoPiecePadding),
-			costIcon.widthAnchor.constraint(equalToConstant: _iconSize),
-			costIcon.heightAnchor.constraint(equalToConstant: _iconSize),
+			costIcon.leadingAnchor.constraint(equalTo: profileImageView.trailingAnchor, constant: imgAndTextPadding),
+			costIcon.topAnchor.constraint(equalTo: openStatusIcon.bottomAnchor, constant: infoPiecePadding),
+			costIcon.widthAnchor.constraint(equalToConstant: iconSize),
+			costIcon.heightAnchor.constraint(equalToConstant: iconSize),
 			
 			costLabel.centerYAnchor.constraint(equalTo: costIcon.centerYAnchor),
 			costLabel.leadingAnchor.constraint(equalTo: costIcon.trailingAnchor, constant: 6),
 			costLabel.widthAnchor.constraint(equalToConstant: 56),
-			costLabel.heightAnchor.constraint(equalToConstant: _infoTextHeight),
+			costLabel.heightAnchor.constraint(equalToConstant: infoTextHeight),
 			
 			underlyingCostLabel.centerYAnchor.constraint(equalTo: costIcon.centerYAnchor),
 			underlyingCostLabel.leadingAnchor.constraint(equalTo: costIcon.trailingAnchor, constant: 6),
 			underlyingCostLabel.widthAnchor.constraint(equalToConstant: 56),
-			underlyingCostLabel.heightAnchor.constraint(equalToConstant: _infoTextHeight),
+			underlyingCostLabel.heightAnchor.constraint(equalToConstant: infoTextHeight),
 			
 			ratingIcon.centerYAnchor.constraint(equalTo: costIcon.centerYAnchor),
-			ratingIcon.leadingAnchor.constraint(equalTo: costLabel.trailingAnchor, constant: _infoPiecePadding),
-			ratingIcon.widthAnchor.constraint(equalToConstant: _iconSize),
-			ratingIcon.heightAnchor.constraint(equalToConstant: _iconSize),
+			ratingIcon.leadingAnchor.constraint(equalTo: costLabel.trailingAnchor, constant: infoPiecePadding),
+			ratingIcon.widthAnchor.constraint(equalToConstant: iconSize),
+			ratingIcon.heightAnchor.constraint(equalToConstant: iconSize),
 			
 			ratingLabel.centerYAnchor.constraint(equalTo: ratingIcon.centerYAnchor),
 			ratingLabel.leadingAnchor.constraint(equalTo: ratingIcon.trailingAnchor, constant: 6),
 			ratingLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-			ratingLabel.heightAnchor.constraint(equalToConstant: _infoTextHeight)
+			ratingLabel.heightAnchor.constraint(equalToConstant: infoTextHeight)
 		])
 	}
 	

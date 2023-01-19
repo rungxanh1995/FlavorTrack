@@ -43,49 +43,49 @@ private extension BusinessInfoDetailVC {
 													 phoneLabel, tagIcon, tagLabel, linkIcon, linkLabel)
 		
 		let _imgAndTextPadding: CGFloat = 6.0
-		let _infoPiecePadding: CGFloat = 16.0
-		let _iconSize: CGFloat = 18.0
-		let _infoTextHeight: CGFloat = 22.0
+		let infoPiecePadding: CGFloat = 16.0
+		let iconSize: CGFloat = 18.0
+		let infoTextHeight: CGFloat = 22.0
 		NSLayoutConstraint.activate([
 			locationIcon.topAnchor.constraint(equalTo: view.topAnchor),
 			locationIcon.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-			locationIcon.widthAnchor.constraint(equalToConstant: _iconSize),
-			locationIcon.heightAnchor.constraint(equalToConstant: _iconSize),
+			locationIcon.widthAnchor.constraint(equalToConstant: iconSize),
+			locationIcon.heightAnchor.constraint(equalToConstant: iconSize),
 			
 			locationLabel.centerYAnchor.constraint(equalTo: locationIcon.centerYAnchor),
 			locationLabel.leadingAnchor.constraint(equalTo: locationIcon.trailingAnchor, constant: _imgAndTextPadding),
 			locationLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-			locationLabel.heightAnchor.constraint(equalToConstant: _infoTextHeight),
+			locationLabel.heightAnchor.constraint(equalToConstant: infoTextHeight),
 			
-			phoneIcon.topAnchor.constraint(equalTo: locationIcon.bottomAnchor, constant: _infoPiecePadding),
+			phoneIcon.topAnchor.constraint(equalTo: locationIcon.bottomAnchor, constant: infoPiecePadding),
 			phoneIcon.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-			phoneIcon.widthAnchor.constraint(equalToConstant: _iconSize),
-			phoneIcon.heightAnchor.constraint(equalToConstant: _iconSize),
+			phoneIcon.widthAnchor.constraint(equalToConstant: iconSize),
+			phoneIcon.heightAnchor.constraint(equalToConstant: iconSize),
 			
 			phoneLabel.centerYAnchor.constraint(equalTo: phoneIcon.centerYAnchor),
 			phoneLabel.leadingAnchor.constraint(equalTo: phoneIcon.trailingAnchor, constant: _imgAndTextPadding),
 			phoneLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-			phoneLabel.heightAnchor.constraint(equalToConstant: _infoTextHeight),
+			phoneLabel.heightAnchor.constraint(equalToConstant: infoTextHeight),
 			
-			tagIcon.topAnchor.constraint(equalTo: phoneIcon.bottomAnchor, constant: _infoPiecePadding),
+			tagIcon.topAnchor.constraint(equalTo: phoneIcon.bottomAnchor, constant: infoPiecePadding),
 			tagIcon.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-			tagIcon.widthAnchor.constraint(equalToConstant: _iconSize),
-			tagIcon.heightAnchor.constraint(equalToConstant: _iconSize),
+			tagIcon.widthAnchor.constraint(equalToConstant: iconSize),
+			tagIcon.heightAnchor.constraint(equalToConstant: iconSize),
 			
 			tagLabel.centerYAnchor.constraint(equalTo: tagIcon.centerYAnchor),
 			tagLabel.leadingAnchor.constraint(equalTo: tagIcon.trailingAnchor, constant: _imgAndTextPadding),
 			tagLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-			tagLabel.heightAnchor.constraint(equalToConstant: _infoTextHeight),
+			tagLabel.heightAnchor.constraint(equalToConstant: infoTextHeight),
 			
-			linkIcon.topAnchor.constraint(equalTo: tagIcon.bottomAnchor, constant: _infoPiecePadding),
+			linkIcon.topAnchor.constraint(equalTo: tagIcon.bottomAnchor, constant: infoPiecePadding),
 			linkIcon.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-			linkIcon.widthAnchor.constraint(equalToConstant: _iconSize),
-			linkIcon.heightAnchor.constraint(equalToConstant: _iconSize),
+			linkIcon.widthAnchor.constraint(equalToConstant: iconSize),
+			linkIcon.heightAnchor.constraint(equalToConstant: iconSize),
 			
 			linkLabel.centerYAnchor.constraint(equalTo: linkIcon.centerYAnchor),
 			linkLabel.leadingAnchor.constraint(equalTo: linkIcon.trailingAnchor, constant: _imgAndTextPadding),
 			linkLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-			linkLabel.heightAnchor.constraint(equalToConstant: _infoTextHeight)
+			linkLabel.heightAnchor.constraint(equalToConstant: infoTextHeight)
 		])
 	}
 	

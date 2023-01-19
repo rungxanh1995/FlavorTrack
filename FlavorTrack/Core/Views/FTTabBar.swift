@@ -19,7 +19,7 @@ final class FTTabBar: UITabBarController {
 	private func configTabBarController() -> Void {
 		viewControllers = [
 			createSearchNavigationController(),
-			_createFavListNavigationController()
+			createFavListNavigationController()
 		]
 	}
 	
@@ -30,7 +30,7 @@ final class FTTabBar: UITabBarController {
 		return UINavigationController(rootViewController: searchVC)
 	}
 	
-	private func _createFavListNavigationController() -> UINavigationController {
+	private func createFavListNavigationController() -> UINavigationController {
 		let favListVC = FavoriteListVC()
 		favListVC.title = NSLocalizedString("Favorites", comment: "The title of Favorites view controller")
 		favListVC.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 1)

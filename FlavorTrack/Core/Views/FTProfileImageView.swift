@@ -15,10 +15,10 @@ final class FTProfileImageView: UIImageView {
 	
 	override init(frame: CGRect) {
 		super.init(frame: frame)
-		_configure()
+		configure()
 	}
 	
-	private func _configure() -> Void {
+	private func configure() -> Void {
 		disableAutoConstraints()
 
 		image = placeholderImage
