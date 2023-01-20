@@ -35,6 +35,10 @@ The app uses data provided from Yelp, and results fetched are sorted by distance
             <td>Custom UI</td>
             <td>UI components (alert banners, buttons, text labels, etc.) customized on top of Apple APIs to keep inbuilt support for a familiar systemwide iOS look</td>
         </tr>
+		<tr>
+            <td>Localization</td>
+            <td>Support another beside English for the app. At the moment, Vietnamese support is available.</td>
+        </tr>
         <tr>
             <td>Accessbility</td>
             <td>Integrate accessibility considerations in the development of complex views with custom UI components</td>
@@ -84,15 +88,6 @@ Below are some biggest challenges I faced:
         </tr>
     </tbody>
 </table>
-
-## What Would I Change
-<pre>under construction, to be live soon</pre>
-implement realtime GPS parsing and refetch data, but it could cost more API consumption limit
-generic types for data fetching and persistence
-abstraction for decoupled code and extensibility
-core data caching so the app remains useable even when offline
-unit tests
-figure a good way to display cost info with good accessibility support
 
 ## Screenshots
 ![screenshot](screenshots/screenshot.png)
