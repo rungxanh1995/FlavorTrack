@@ -74,6 +74,21 @@ final class BusinessDataService {
 		.resume()
 	}
 	
+	/// Fetch data of generic type `T` that conforms to the `Decodable` protocol, from a specific nearby address and business type.
+	/// Available for iOS 15.0+
+	///
+	/// Example usage:
+	/// ```
+	/// do {
+	/// 	let result: RawServerResponse = try await BusinessDataService.shared.fetchData(nearby: location, businessType: businessType)
+	/// 	updateUI(with: result.businesses.sorted { $0.distance < $1.distance })
+	///} catch let error {
+	///		presentAlert(message: error.rawValue)
+	///}
+	/// ```
+	/// - Parameters:
+	/// 	- nearby: A string representing the nearby address.
+	/// 	- businessType: A string representing the business type.
 	@available(iOS 15.0, *)
 	func fetchData<T: Decodable>(nearby address: String, businessType: String) async throws -> T {
 		let endpoint = "\(ApiConstants.Endpoint.base)?\(ApiConstants.Endpoint.addAddress(address.percentEncoded))&\(ApiConstants.Endpoint.addBusinessType(businessType.percentEncoded))&\(ApiConstants.Endpoint.defaultRadiusAndBatchLimit)"
@@ -88,13 +103,15 @@ final class BusinessDataService {
 		request.allHTTPHeaderFields = headers
 		request.httpMethod = "GET"
 		
-		do {
-			// Cast to `RawServerResponse` type due to the JSON structure returned from Yelp API
-			let decodedResponse: RawServerResponse = try await URLSession.shared.decode(from: request)
-			return decodedResponse.businesses as! T
-		} catch let error {
-			throw error
+		let (data, response) = try await URLSession.shared.data(for: request)
+		guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+			throw NetworkError.invalidResponse
 		}
+		
+		do {
+			let decoder = JSONDecoder()
+			return try decoder.decode(T.self, from: data)
+		} catch { throw NetworkError.invalidData }
 	}
 }
 
