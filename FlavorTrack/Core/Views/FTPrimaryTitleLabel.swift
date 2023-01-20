@@ -7,13 +7,13 @@
 
 import UIKit
 
-class FTPrimaryTitleLabel: UILabel {
+final class FTPrimaryTitleLabel: UILabel {
 
 	required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
 
 	override init(frame: CGRect) {
 		super.init(frame: frame)
-		_configure()
+		configure()
 	}
 	
 	convenience init(textAlignment: NSTextAlignment, ofSize fontSize: CGFloat) {
@@ -22,7 +22,7 @@ class FTPrimaryTitleLabel: UILabel {
 		self.font = .systemFont(ofSize: fontSize, weight: .bold)
 	}
 	
-	private func _configure() {
+	private func configure() {
 		disableAutoConstraints()
 
 		textColor = .label

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class BusinessListVC: UIViewController, LoadableScreen {
+final class BusinessListVC: UIViewController, LoadableScreen {
 	
 	internal enum CollectionSection { case main }
 	
@@ -33,7 +33,7 @@ class BusinessListVC: UIViewController, LoadableScreen {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		view.backgroundColor = .systemBackground
-		title = "\(businessType.capitalized) near \(searchedLocation.capitalized(with: .current))"
+		title = businessType.capitalized.localizedDynamicString(near: searchedLocation.capitalized)
 		
 		configCollectionView()
 		configDataSource()
@@ -69,7 +69,7 @@ private extension BusinessListVC {
 	
 	private func configSearchBar() -> Void {
 		let searchController: UISearchController = .init()
-		searchController.searchBar.placeholder = "Search a name"
+		searchController.searchBar.placeholder = NSLocalizedString("Search a name", comment: "The placeholder of search bar in Business list controller")
 		searchController.searchResultsUpdater = self
 		navigationItem.hidesSearchBarWhenScrolling = false
 		navigationItem.searchController = searchController
@@ -82,8 +82,8 @@ private extension BusinessListVC {
 		
 		Task {
 			do {
-				let result = try await BusinessDataService.shared.getBusinessList(nearby: location, businessType: businessType)
-				updateUI(with: result.sorted { $0.distance < $1.distance } )
+				let result: RawServerResponse = try await BusinessDataService.shared.fetchData(nearby: location, businessType: businessType)
+				updateUI(with: result.businesses.sorted { $0.distance < $1.distance })
 			} catch let error as BusinessDataService.NetworkError {
 				presentAlert(message: error.rawValue)
 			} catch { presentDefaultAlert() }

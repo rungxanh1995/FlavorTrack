@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FTTextField: UITextField {
+final class FTTextField: UITextField {
 
 	required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
 	
@@ -41,7 +41,7 @@ class FTTextField: UITextField {
 		autocapitalizationType = .none
 		returnKeyType = .go
 		clearButtonMode = .whileEditing
-		self.placeholder = placeholder
+		self.placeholder = NSLocalizedString(placeholder ?? "", comment: "")
 	}
 
 	override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {

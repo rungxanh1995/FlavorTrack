@@ -32,7 +32,7 @@ final class FTButton: UIButton {
 	}
 	
 	func setNew(title: String, withColor color: UIColor) {
-		configuration?.title = title
+		configuration?.title = NSLocalizedString(title, comment: "The title for the button")
 		configuration?.baseBackgroundColor = color
 		configuration?.baseForegroundColor = color
 	}

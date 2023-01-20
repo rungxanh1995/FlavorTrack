@@ -7,23 +7,23 @@
 
 import UIKit
 
-class GHEmptyStateView: UIView {
+final class GHEmptyStateView: UIView {
 
 	private let logoImageView: UIImageView = .init()
 	private let messageLabel: FTPrimaryTitleLabel = .init(textAlignment: .center, ofSize: 24)
 	
 	override init(frame: CGRect) {
 		super.init(frame: frame)
-		_configure()
+		configure()
 	}
 	
 	convenience init(message: String) {
 		self.init(frame: .zero)
 		backgroundColor = .systemBackground
-		messageLabel.text = message
+		messageLabel.text = NSLocalizedString(message, comment: "The text of the empty state view")
 	}
 	
-	private func _configure() -> Void {
+	private func configure() -> Void {
 		addSubview(logoImageView)
 		addSubview(messageLabel)
 		
@@ -33,10 +33,11 @@ class GHEmptyStateView: UIView {
 		logoImageView.image = AppImages.emptyStateLogo
 		logoImageView.disableAutoConstraints()
 		
+		messageLabel.constrainToLeadingAndTrailingAnchors(of: self, padding: 40.0)
+		
+		// extra constraints
 		NSLayoutConstraint.activate([
 			messageLabel.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -150),
-			messageLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 40),
-			messageLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40),
 			messageLabel.heightAnchor.constraint(equalToConstant: 200),
 			
 			logoImageView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 1.3),
