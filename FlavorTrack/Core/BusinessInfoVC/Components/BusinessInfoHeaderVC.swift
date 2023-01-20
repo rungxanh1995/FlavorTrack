@@ -7,7 +7,7 @@
 
 import UIKit
 
-class BusinessInfoHeaderVC: UIViewController {
+final class BusinessInfoHeaderVC: UIViewController {
 	
 	private let profileImageView: FTProfileImageView = .init(frame: .zero)
 	private let nameLabel: FTPrimaryTitleLabel = .init(textAlignment: .natural, ofSize: 28)
@@ -49,65 +49,63 @@ private extension BusinessInfoHeaderVC {
 													 distanceLabel, openStatusIcon, openStatusLabel,
 													 costIcon, costLabel, underlyingCostLabel, ratingIcon, ratingLabel)
 		
-		let _imgAndTextPadding: CGFloat = 12.0
-		let _infoPiecePadding: CGFloat = 10.0
-		let _iconSize: CGFloat = 18.0
-		let _infoTextHeight: CGFloat = 22.0
+		let imgAndTextPadding: CGFloat = 12.0
+		let infoPiecePadding: CGFloat = 10.0
+		let iconSize: CGFloat = 18.0
+		let infoTextHeight: CGFloat = 22.0
+		
+		profileImageView.constrainSizeToConstant(90.0)
+		distanceIcon.constrainSizeToConstant(iconSize)
+		openStatusIcon.constrainSizeToConstant(iconSize)
+		costIcon.constrainSizeToConstant(iconSize)
+		ratingIcon.constrainSizeToConstant(iconSize)
+		
+		// extra constraints
 		NSLayoutConstraint.activate([
 			profileImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 16),
 			profileImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-			profileImageView.widthAnchor.constraint(equalToConstant: 90),
-			profileImageView.heightAnchor.constraint(equalToConstant: 90),
 			
 			nameLabel.topAnchor.constraint(equalTo: view.topAnchor),
-			nameLabel.leadingAnchor.constraint(equalTo: profileImageView.trailingAnchor, constant: _imgAndTextPadding),
+			nameLabel.leadingAnchor.constraint(equalTo: profileImageView.trailingAnchor, constant: imgAndTextPadding),
 			nameLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor),
 			nameLabel.heightAnchor.constraint(equalToConstant: 32),
 			
-			distanceIcon.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: _infoPiecePadding),
-			distanceIcon.leadingAnchor.constraint(equalTo: profileImageView.trailingAnchor, constant: _imgAndTextPadding),
-			distanceIcon.widthAnchor.constraint(equalToConstant: _iconSize),
-			distanceIcon.heightAnchor.constraint(equalToConstant: _iconSize),
+			distanceIcon.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: infoPiecePadding),
+			distanceIcon.leadingAnchor.constraint(equalTo: profileImageView.trailingAnchor, constant: imgAndTextPadding),
 			
 			distanceLabel.centerYAnchor.constraint(equalTo: distanceIcon.centerYAnchor),
 			distanceLabel.leadingAnchor.constraint(equalTo: distanceIcon.trailingAnchor, constant: 6),
 			distanceLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-			distanceLabel.heightAnchor.constraint(equalToConstant: _infoTextHeight),
+			distanceLabel.heightAnchor.constraint(equalToConstant: infoTextHeight),
 			
-			openStatusIcon.topAnchor.constraint(equalTo: distanceIcon.bottomAnchor, constant: _infoPiecePadding),
-			openStatusIcon.leadingAnchor.constraint(equalTo: profileImageView.trailingAnchor, constant: _imgAndTextPadding),
-			openStatusIcon.widthAnchor.constraint(equalToConstant: _iconSize),
-			openStatusIcon.heightAnchor.constraint(equalToConstant: _iconSize),
+			openStatusIcon.topAnchor.constraint(equalTo: distanceIcon.bottomAnchor, constant: infoPiecePadding),
+			openStatusIcon.leadingAnchor.constraint(equalTo: profileImageView.trailingAnchor, constant: imgAndTextPadding),
 			
 			openStatusLabel.centerYAnchor.constraint(equalTo: openStatusIcon.centerYAnchor),
 			openStatusLabel.leadingAnchor.constraint(equalTo: openStatusIcon.trailingAnchor, constant: 6),
 			openStatusLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-			openStatusLabel.heightAnchor.constraint(equalToConstant: _infoTextHeight),
+			openStatusLabel.heightAnchor.constraint(equalToConstant: infoTextHeight),
 
-			costIcon.leadingAnchor.constraint(equalTo: profileImageView.trailingAnchor, constant: _imgAndTextPadding),
-			costIcon.topAnchor.constraint(equalTo: openStatusIcon.bottomAnchor, constant: _infoPiecePadding),
-			costIcon.widthAnchor.constraint(equalToConstant: _iconSize),
-			costIcon.heightAnchor.constraint(equalToConstant: _iconSize),
+			costIcon.leadingAnchor.constraint(equalTo: profileImageView.trailingAnchor, constant: imgAndTextPadding),
+			costIcon.topAnchor.constraint(equalTo: openStatusIcon.bottomAnchor, constant: infoPiecePadding),
 			
 			costLabel.centerYAnchor.constraint(equalTo: costIcon.centerYAnchor),
 			costLabel.leadingAnchor.constraint(equalTo: costIcon.trailingAnchor, constant: 6),
 			costLabel.widthAnchor.constraint(equalToConstant: 56),
-			costLabel.heightAnchor.constraint(equalToConstant: _infoTextHeight),
+			costLabel.heightAnchor.constraint(equalToConstant: infoTextHeight),
 			
 			underlyingCostLabel.centerYAnchor.constraint(equalTo: costIcon.centerYAnchor),
 			underlyingCostLabel.leadingAnchor.constraint(equalTo: costIcon.trailingAnchor, constant: 6),
 			underlyingCostLabel.widthAnchor.constraint(equalToConstant: 56),
-			underlyingCostLabel.heightAnchor.constraint(equalToConstant: _infoTextHeight),
+			underlyingCostLabel.heightAnchor.constraint(equalToConstant: infoTextHeight),
 			
 			ratingIcon.centerYAnchor.constraint(equalTo: costIcon.centerYAnchor),
-			ratingIcon.leadingAnchor.constraint(equalTo: costLabel.trailingAnchor, constant: _infoPiecePadding),
-			ratingIcon.widthAnchor.constraint(equalToConstant: _iconSize),
-			ratingIcon.heightAnchor.constraint(equalToConstant: _iconSize),
+			ratingIcon.leadingAnchor.constraint(equalTo: costLabel.trailingAnchor, constant: infoPiecePadding),
 			
 			ratingLabel.centerYAnchor.constraint(equalTo: ratingIcon.centerYAnchor),
 			ratingLabel.leadingAnchor.constraint(equalTo: ratingIcon.trailingAnchor, constant: 6),
 			ratingLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-			ratingLabel.heightAnchor.constraint(equalToConstant: _infoTextHeight)
+			ratingLabel.heightAnchor.constraint(equalToConstant: infoTextHeight)
 		])
 	}
 	
@@ -118,14 +116,14 @@ private extension BusinessInfoHeaderVC {
 		
 		distanceIcon.image = SFSymbols.distance
 		distanceIcon.tintColor = .secondaryLabel
-		distanceLabel.text = business.distance <= 1_000 ?
-			"\(business.distance.noDecimalDigits)m from \(searchedLocation!)" :
-			"\((business.distance/1000).withOneDecimalDigit)km from \(searchedLocation!)"
+		distanceLabel.text = business.distance.localizedDynamicString(awayFrom: searchedLocation)
 		distanceLabel.setNew(color: business.distance <= 1_000 ? .systemGreen : .systemOrange)
 		
 		openStatusIcon.image = business.isClosed ? SFSymbols.doorClosed : SFSymbols.doorOpen
 		openStatusIcon.tintColor = .secondaryLabel
-		openStatusLabel.text = business.isClosed ? "Closed from Public" : "Open to Public"
+		openStatusLabel.text = business.isClosed ?
+			NSLocalizedString("Closed from Public", comment: "") :
+			NSLocalizedString("Open to Public", comment: "")
 		openStatusLabel.setNew(color: business.isClosed ? .systemPink : .systemGreen)
 		
 		costIcon.image = SFSymbols.money
@@ -141,19 +139,19 @@ private extension BusinessInfoHeaderVC {
 	
 	private func configAccessibilityForIcons() -> Void {
 		distanceIcon.isAccessibilityElement = true
-		distanceIcon.accessibilityLabel = "Distance"
+		distanceIcon.accessibilityLabel = NSLocalizedString("Distance", comment: "The noun")
 		distanceIcon.accessibilityValue = "icon"
 		
 		openStatusIcon.isAccessibilityElement = true
-		openStatusIcon.accessibilityLabel = "Is open or closed?"
+		openStatusIcon.accessibilityLabel = NSLocalizedString("Is open or closed?", comment: "")
 		openStatusIcon.accessibilityValue = "icon"
 		
 		costIcon.isAccessibilityElement = true
-		costIcon.accessibilityLabel = "Cost"
+		costIcon.accessibilityLabel = NSLocalizedString("Cost", comment: "The noun")
 		costIcon.accessibilityValue = "icon"
 		
 		ratingIcon.isAccessibilityElement = true
-		ratingIcon.accessibilityLabel = "Rating"
+		ratingIcon.accessibilityLabel = NSLocalizedString("Rating", comment: "The noun")
 		ratingIcon.accessibilityValue = "icon"
 	}
 }

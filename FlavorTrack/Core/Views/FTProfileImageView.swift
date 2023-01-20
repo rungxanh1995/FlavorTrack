@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FTProfileImageView: UIImageView {
+final class FTProfileImageView: UIImageView {
 	
 	required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
 
@@ -15,10 +15,10 @@ class FTProfileImageView: UIImageView {
 	
 	override init(frame: CGRect) {
 		super.init(frame: frame)
-		_configure()
+		configure()
 	}
 	
-	private func _configure() -> Void {
+	private func configure() -> Void {
 		disableAutoConstraints()
 
 		image = placeholderImage

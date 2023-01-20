@@ -13,7 +13,7 @@ final class BusinessCell: UICollectionViewCell {
 	
 	private let profileImageView: FTProfileImageView = .init(frame: .zero)
 	private let businessNameLabel: FTPrimaryTitleLabel = .init(textAlignment: .center, ofSize: 13)
-	private let _padding: CGFloat = 4.0
+	private let edgePadding: CGFloat = 4.0
 	
 	override init(frame: CGRect) {
 		super.init(frame: frame)
@@ -28,15 +28,13 @@ final class BusinessCell: UICollectionViewCell {
 	private func configure() -> Void {
 		addAllSubviews(profileImageView, businessNameLabel)
 		
+		profileImageView.constrainToUpperHalf(of: self, padding: edgePadding)
+		businessNameLabel.constrainToLeadingAndTrailingAnchors(of: self, padding: edgePadding)
+		
+		// extra constraints
 		NSLayoutConstraint.activate([
-			profileImageView.topAnchor.constraint(equalTo: topAnchor, constant: _padding),
-			profileImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: _padding),
-			profileImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -(_padding)),
 			profileImageView.heightAnchor.constraint(equalTo: profileImageView.widthAnchor),
-			
 			businessNameLabel.topAnchor.constraint(equalTo: profileImageView.bottomAnchor, constant: 12),
-			businessNameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: _padding),
-			businessNameLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -(_padding)),
 			businessNameLabel.heightAnchor.constraint(equalToConstant: 20)
 		])
 	}

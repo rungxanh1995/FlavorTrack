@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FavoriteListVC: UIViewController {
+final class FavoriteListVC: UIViewController {
 	private var allFavorites: [Business] = []
 	private var tableView: UITableView!
 	
@@ -20,7 +20,7 @@ class FavoriteListVC: UIViewController {
         super.viewDidLoad()
 
 		view.backgroundColor = .systemBackground
-		title = "Favorite Places"
+		title = NSLocalizedString("Favorite Places", comment: "")
 		
 		configTableView()
     }
@@ -86,7 +86,7 @@ extension FavoriteListVC: UITableViewDelegate, UITableViewDataSource {
 			tableView.deleteRows(at: [indexPath], with: .left)
 			
 			if allFavorites.isEmpty {
-				showEmptyStateView(saying: "No favorites added yet!\nGo add some 😊", in: view)
+				showEmptyStateView(saying: "No favorite places added yet!\nGo add some 😊", in: view)
 			}
 		}
 	}

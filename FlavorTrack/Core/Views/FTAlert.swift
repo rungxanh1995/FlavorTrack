@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FTAlert: UIViewController {
+final class FTAlert: UIViewController {
 	
 	required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
 
@@ -20,7 +20,7 @@ class FTAlert: UIViewController {
 	private var messageString: String?
 	private var buttonTitleString: String?
 	
-	private let _padding: CGFloat = 20.0
+	private let edgePadding: CGFloat = 16.0
 	
 	init(title: String, message: String, btnTitle: String) {
 		super.init(nibName: nil, bundle: nil)
@@ -53,38 +53,29 @@ class FTAlert: UIViewController {
 private extension FTAlert {
 	private func configContainerView() -> Void {
 		view.addSubview(containerView)
+		containerView.pinToCenter(of: view)
 		
 		NSLayoutConstraint.activate([
-			containerView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-			containerView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-			containerView.widthAnchor.constraint(equalToConstant: 280),
-			containerView.heightAnchor.constraint(equalToConstant: 220)
+			containerView.widthAnchor.constraint(equalToConstant: 320),
+			containerView.heightAnchor.constraint(equalToConstant: 240)
 		])
 	}
 	
 	private func configTitleLabel() -> Void {
 		containerView.addSubview(titleLabel)
-		titleLabel.text = titleString ?? "Something went wrong"
+		titleLabel.text = NSLocalizedString(titleString ?? "Something went wrong", comment: "The text of the alert title")
 		
-		NSLayoutConstraint.activate([
-			titleLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: _padding),
-			titleLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: _padding),
-			titleLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -(_padding)),
-			titleLabel.heightAnchor.constraint(equalToConstant: 28)
-		])
+		titleLabel.constrainToUpperHalf(of: containerView, padding: edgePadding)
+		NSLayoutConstraint.activate([titleLabel.heightAnchor.constraint(equalToConstant: 28)])
 	}
 	
 	private func configAlertButton() -> Void {
 		containerView.addSubview(alertButton)
-		alertButton.setTitle(buttonTitleString ?? "OK", for: .normal)
+		alertButton.setTitle(NSLocalizedString(buttonTitleString ?? "OK", comment: "The text of the alert button title"), for: .normal)
 		alertButton.addTarget(self, action: #selector(_dismissAlert), for: .touchUpInside)
 		
-		NSLayoutConstraint.activate([
-			alertButton.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -(_padding)),
-			alertButton.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: _padding),
-			alertButton.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -(_padding)),
-			alertButton.heightAnchor.constraint(equalToConstant: 48)
-		])
+		alertButton.constrainToLowerHalf(of: containerView, padding: edgePadding)
+		NSLayoutConstraint.activate([alertButton.heightAnchor.constraint(equalToConstant: 48)])
 	}
 	
 	@objc
@@ -94,13 +85,13 @@ private extension FTAlert {
 	/// so please call it after you have already configured the other 2 views
 	private func configMessageLabel() -> Void {
 		containerView.addSubview(messageLabel)
-		messageLabel.text = messageString ?? "Unable to complete request"
+		messageLabel.text = NSLocalizedString(messageString ?? "Unable to complete request", comment: "The text of the alert message")
 		messageLabel.numberOfLines = 4
 		
+		messageLabel.constrainToLeadingAndTrailingAnchors(of: containerView, padding: edgePadding)
+		// extra constraints
 		NSLayoutConstraint.activate([
 			messageLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 8),
-			messageLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: _padding),
-			messageLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -(_padding)),
 			messageLabel.bottomAnchor.constraint(equalTo: alertButton.topAnchor, constant: -(8))
 		])
 	}

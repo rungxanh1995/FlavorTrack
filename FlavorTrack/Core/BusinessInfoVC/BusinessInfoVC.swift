@@ -8,7 +8,7 @@
 import UIKit
 import MapKit
 
-class BusinessInfoVC: UIViewController, LoadableScreen {
+final class BusinessInfoVC: UIViewController, LoadableScreen {
 
 	internal var containerView: UIView!
 	private var business: Business!
@@ -21,7 +21,7 @@ class BusinessInfoVC: UIViewController, LoadableScreen {
 	private var detailView: UIView!
 	private var mapHostingView: UIView!
 	
-	init(for business: Business, near location: String = "searched location") {
+	init(for business: Business, near location: String = NSLocalizedString("searched location", comment: "The default distance-from location info of a business")) {
 		super.init(nibName: nil, bundle: nil)
 		self.business = business
 		self.searchedLocation = location
@@ -51,15 +51,13 @@ private extension BusinessInfoVC {
 	private func configNavigationBarButtons() -> Void {
 		let doneBarBtn: UIBarButtonItem = .init(barButtonSystemItem: .done, target: self, action: #selector(_dismissVC))
 		doneBarBtn.isAccessibilityElement = true
-		doneBarBtn.accessibilityLabel = "Done and dismiss view"
-		doneBarBtn.accessibilityValue = "button"
+		doneBarBtn.accessibilityLabel = NSLocalizedString("Done and dismiss view", comment: "The accessibility label of the Done navigation bar button")
 		navigationItem.setRightBarButtonItems([doneBarBtn], animated: true)
 		
 		let favBarBtn: UIBarButtonItem = .init(image: SFSymbols.star, style: .plain,
 											   target: self, action: #selector(_favoriteButtonClicked))
 		favBarBtn.isAccessibilityElement = true
-		favBarBtn.accessibilityLabel = "Add to favorites"
-		favBarBtn.accessibilityValue = "button"
+		favBarBtn.accessibilityLabel = NSLocalizedString("Add to favorites", comment: "The accessibility label of the Favorite navigation bar button")
 		navigationItem.setLeftBarButtonItems([favBarBtn], animated: true)
 	}
 	
@@ -68,34 +66,25 @@ private extension BusinessInfoVC {
 		scrollView.addAllSubviewsAndDisableAutoConstraints(contentView)
 		contentView.addAllSubviewsAndDisableAutoConstraints(headerView, detailView, mapHostingView)
 		
-		let _edgePadding: CGFloat = 12.0
-		let _itemPadding: CGFloat = 24.0
+		let edgePadding: CGFloat = 12.0
+		let itemPadding: CGFloat = 24.0
+		
+		scrollView.pinToEdges(of: view)
+		contentView.pinToEdges(of: scrollView)
+		headerView.constrainToUpperHalf(of: contentView, padding: edgePadding)
+		detailView.constrainToLeadingAndTrailingAnchors(of: contentView, padding: edgePadding)
+		mapHostingView.constrainToLowerHalf(of: contentView, padding: edgePadding)
+		
+		// extra constraints
 		NSLayoutConstraint.activate([
-			scrollView.topAnchor.constraint(equalTo: view.topAnchor),
-			scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-			scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-			scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-			
-			contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
-			contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
-			contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
-			contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
 			contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
 			contentView.heightAnchor.constraint(equalToConstant: 660),
 			
-			headerView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: _edgePadding),
-			headerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: _edgePadding),
-			headerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -(_edgePadding)),
 			headerView.heightAnchor.constraint(equalToConstant: 120),
 			
-			detailView.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: _itemPadding),
-			detailView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: _edgePadding),
-			detailView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -(_edgePadding)),
+			detailView.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: itemPadding),
 			detailView.heightAnchor.constraint(equalToConstant: 120),
 			
-			mapHostingView.topAnchor.constraint(equalTo: detailView.bottomAnchor, constant: _itemPadding),
-			mapHostingView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: _edgePadding),
-			mapHostingView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -(_edgePadding)),
 			mapHostingView.heightAnchor.constraint(equalToConstant: 340)
 		])
 	}
@@ -119,7 +108,8 @@ private extension BusinessInfoVC {
 		let savingError = PersistenceManager.updateWith(business, forAction: .add)
 		switch savingError {
 			case .none:
-				presentAlert(title: "Favorited!", message: "Successfully saved \(business.name) to favorites")
+				presentAlert(title: "Favorited!",
+							 message: business.name.localizedDynamicString(fromKey: "Successfully saved %@ to favorites"))
 			case .some(let error):
 				presentAlert(title: "Uh-oh!", message: error.rawValue)
 		}
