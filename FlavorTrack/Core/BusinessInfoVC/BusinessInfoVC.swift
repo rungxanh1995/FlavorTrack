@@ -49,14 +49,14 @@ class BusinessInfoVC: UIViewController, LoadableScreen {
 private extension BusinessInfoVC {
 	
 	private func configNavigationBarButtons() -> Void {
-		let doneBarBtn: UIBarButtonItem = .init(barButtonSystemItem: .done, target: self, action: #selector(_dismissVC))
+		let doneBarBtn: UIBarButtonItem = .init(barButtonSystemItem: .done, target: self, action: #selector(dismissVC))
 		doneBarBtn.isAccessibilityElement = true
 		doneBarBtn.accessibilityLabel = "Done and dismiss view"
 		doneBarBtn.accessibilityValue = "button"
 		navigationItem.setRightBarButtonItems([doneBarBtn], animated: true)
 		
 		let favBarBtn: UIBarButtonItem = .init(image: SFSymbols.star, style: .plain,
-											   target: self, action: #selector(_favoriteButtonClicked))
+											   target: self, action: #selector(favoriteButtonClicked))
 		favBarBtn.isAccessibilityElement = true
 		favBarBtn.accessibilityLabel = "Add to favorites"
 		favBarBtn.accessibilityValue = "button"
@@ -109,10 +109,10 @@ private extension BusinessInfoVC {
 	}
 	
 	@objc
-	private func _dismissVC() { dismiss(animated: true) }
+	private func dismissVC() { dismiss(animated: true) }
 	
 	@objc
-	private func _favoriteButtonClicked() -> Void {
+	private func favoriteButtonClicked() -> Void {
 		showLoadingOverlay()
 		defer { dismissLoadingOverlay() }
 		

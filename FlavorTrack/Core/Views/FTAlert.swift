@@ -76,8 +76,8 @@ private extension FTAlert {
 	
 	private func configAlertButton() -> Void {
 		containerView.addSubview(alertButton)
-		alertButton.setTitle(buttonTitleString ?? "OK", for: .normal)
-		alertButton.addTarget(self, action: #selector(_dismissAlert), for: .touchUpInside)
+		alertButton.setTitle(NSLocalizedString(buttonTitleString ?? "OK", comment: "The text of the alert button title"), for: .normal)
+		alertButton.addTarget(self, action: #selector(dismissAlert), for: .touchUpInside)
 		
 		NSLayoutConstraint.activate([
 			alertButton.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -(_padding)),
@@ -88,7 +88,7 @@ private extension FTAlert {
 	}
 	
 	@objc
-	private func _dismissAlert() -> Void { dismiss(animated: true) }
+	private func dismissAlert() -> Void { dismiss(animated: true) }
 	
 	/// Message would fill up the space between title and action button,
 	/// so please call it after you have already configured the other 2 views
