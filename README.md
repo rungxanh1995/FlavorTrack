@@ -11,7 +11,6 @@ I enjoy walking for better health and saving money. So I want FlavorTrack app to
 The app uses data provided from Yelp, and results fetched are sorted by distance.
 
 ## Concepts
-<pre>under construction, to be live soon</pre>
 <table>
     <thead>
         <tr>
@@ -60,7 +59,6 @@ The app uses data provided from Yelp, and results fetched are sorted by distance
 </table>
 
 ## Challenges Overcome
-<pre>under construction, to be live soon</pre>
 Throughout the development of this project, I encountered several challenges that required innovative solutions. With determination and critical thinking, I was able to overcome them and deliver a robust, functional outcome.
 
 Below are some biggest challenges I faced:
