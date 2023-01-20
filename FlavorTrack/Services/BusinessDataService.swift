@@ -13,8 +13,24 @@ final class BusinessDataService {
 	
 	let batchSize: Int = 50
 	
-	func getBusinessList(nearby address: String, businessType: String,
-						 onComplete: @escaping (Result<[Business], BusinessDataService.NetworkError>) -> Void) {
+	/// Fetch data of generic type `T` that conforms to the `Decodable` protocol, from a specific nearby address and business type.
+	///
+	/// Example usage:
+	/// ```
+	/// BusinessDataService.shared.fetchData(nearby: location, businessType: businessType) { (result: Result<RawServerResponse, BusinessDataService.NetworkError>) in
+	/// 	switch result {
+	/// 	case .success(let decoded):
+	/// 		self.updateUI(with: decoded.businesses)
+	/// 	case .failure(let error):
+	/// 		self.presentAlert(message: error.rawValue)
+	///		}
+	/// ```
+	/// - Parameters:
+	/// 	- nearby: A string representing the nearby address.
+	/// 	- businessType: A string representing the business type.
+	/// 	- onComplete: A completion handler that takes in a `Result<T, BusinessDataService.NetworkError>` object.
+	func fetchData<T: Decodable>(nearby address: String, businessType: String,
+								 onComplete: @escaping (Result<T, BusinessDataService.NetworkError>) -> Void) -> Void {
 		let endpoint = "\(ApiConstants.Endpoint.base)?\(ApiConstants.Endpoint.addAddress(address.percentEncoded))&\(ApiConstants.Endpoint.addBusinessType(businessType.percentEncoded))&\(ApiConstants.Endpoint.defaultRadiusAndBatchLimit)"
 		
 		guard let url = URL(string: endpoint) else {
@@ -47,13 +63,13 @@ final class BusinessDataService {
 				return
 			}
 			
-			do {
-				let decoder = JSONDecoder()
-				let rawResponse = try decoder.decode(RawServerResponse.self, from: data)
-				onComplete(.success(rawResponse.businesses))
-			} catch {
+			let decoder = JSONDecoder()
+			guard let decoded = try? decoder.decode(T.self, from: data) else {
 				onComplete(.failure(.invalidData))
+				return
 			}
+			
+			onComplete(.success(decoded))
 		}
 		.resume()
 	}
