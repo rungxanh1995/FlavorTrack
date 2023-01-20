@@ -59,11 +59,11 @@ final class BusinessDataService {
 	}
 	
 	@available(iOS 15.0, *)
-	func getBusinessList(nearby address: String, businessType: String) async throws -> [Business] {
+	func fetchData<T: Decodable>(nearby address: String, businessType: String) async throws -> T {
 		let endpoint = "\(ApiConstants.Endpoint.base)?\(ApiConstants.Endpoint.addAddress(address.percentEncoded))&\(ApiConstants.Endpoint.addBusinessType(businessType.percentEncoded))&\(ApiConstants.Endpoint.defaultRadiusAndBatchLimit)"
 		
 		guard let url = URL(string: endpoint) else { throw NetworkError.invalidInputs }
-		
+
 		var request = URLRequest(url: url, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 10.0)
 		let headers = [
 			"accept": "application/json",
@@ -72,17 +72,12 @@ final class BusinessDataService {
 		request.allHTTPHeaderFields = headers
 		request.httpMethod = "GET"
 		
-		let (data, response) = try await URLSession.shared.data(for: request)
-		guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-			throw NetworkError.invalidResponse
-		}
-		
 		do {
-			let decoder = JSONDecoder()
-			let rawResponse = try decoder.decode(RawServerResponse.self, from: data)
-			return rawResponse.businesses
-		} catch {
-			throw NetworkError.invalidData
+			// Cast to `RawServerResponse` type due to the JSON structure returned from Yelp API
+			let decodedResponse: RawServerResponse = try await URLSession.shared.decode(from: request)
+			return decodedResponse.businesses as! T
+		} catch let error {
+			throw error
 		}
 	}
 }
