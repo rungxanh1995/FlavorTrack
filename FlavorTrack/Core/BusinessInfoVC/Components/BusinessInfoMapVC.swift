@@ -42,7 +42,7 @@ final class BusinessInfoMapVC: UIViewController {
 
 private extension BusinessInfoMapVC {
 	
-	private func layoutUI() -> Void {
+	private func layoutUI() {
 		view.addAllSubviewsAndDisableAutoConstraints(mapView, callToActionButton)
 		mapView.constrainToUpperHalf(of: view)
 		callToActionButton.constrainToLowerHalf(of: view)
@@ -54,7 +54,7 @@ private extension BusinessInfoMapVC {
 		])
 	}
 	
-	private func configMapView() -> Void {
+	private func configMapView() {
 		mapView.isUserInteractionEnabled = true
 		mapView.layer.cornerRadius = 8.0
 		mapView.layer.borderWidth = 1
@@ -63,7 +63,7 @@ private extension BusinessInfoMapVC {
 		mapView.clipsToBounds = true
 	}
 	
-	private func configMapRegionAndAnnotation() -> Void {
+	private func configMapRegionAndAnnotation() {
 		let annotation = BusinessMapAnnotation.generate(from: business)
 		let zoomLevel = 0.005
 		mapView.region = MKCoordinateRegion(center: annotation.coordinate,
@@ -71,12 +71,11 @@ private extension BusinessInfoMapVC {
 		mapView.addAnnotation(annotation)
 	}
 	
-	private func configActionButton() -> Void {
+	private func configActionButton() {
 		callToActionButton.addTarget(self, action: #selector(didTapActionButton), for: .touchUpInside)
 	}
 	
-	@objc
-	private func didTapActionButton() -> Void {
+	@objc private func didTapActionButton() {
 		delegate.didRequestMapNavigation(to: business)
 	}
 }

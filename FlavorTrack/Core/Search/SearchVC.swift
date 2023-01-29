@@ -40,7 +40,7 @@ final class SearchVC: UIViewController {
 
 // MARK: - UI Configuration
 private extension SearchVC {
-	private func configLogoImageView() -> Void {
+	private func configLogoImageView() {
 		logoImageView.image = AppImages.ftLogo
 		
 		logoImageView.constrainSizeToConstant(200.0)
@@ -51,7 +51,7 @@ private extension SearchVC {
 		])
 	}
 	
-	private func configTextFields() -> Void {
+	private func configTextFields() {
 		locationTextField.constrainToLeadingAndTrailingAnchors(of: view, padding: edgePadding)
 		businessTypeTextField.constrainToLeadingAndTrailingAnchors(of: view, padding: edgePadding)
 		
@@ -68,7 +68,7 @@ private extension SearchVC {
 		businessTypeTextField.delegate = self
 	}
 	
-	private func configActionButton() -> Void {
+	private func configActionButton() {
 		callToActionButton.constrainToLeadingAndTrailingAnchors(of: view, padding: edgePadding)
 		
 		// extra constraints
@@ -80,8 +80,7 @@ private extension SearchVC {
 		callToActionButton.addTarget(self, action: #selector(validateAndPushBusinessListVC), for: .touchUpInside)
 	}
 	
-	@objc
-	private func validateAndPushBusinessListVC() -> Void {
+	@objc private func validateAndPushBusinessListVC() {
 		guard isLocationEntered else {
 			presentAlert(title: "No Location?",
 						 message: "Please enter an address, road name, or zip code, etc.\nThen we can search 😊.")

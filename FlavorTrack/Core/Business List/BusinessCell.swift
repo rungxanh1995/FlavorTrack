@@ -9,7 +9,7 @@ import UIKit
 
 final class BusinessCell: UICollectionViewCell {
 	/// Reusable identifier of the cell
-	static let REUSE_ID = "BusinessCell"
+	static let reuseIdentifier = "BusinessCell"
 	
 	private let profileImageView: FTProfileImageView = .init(frame: .zero)
 	private let businessNameLabel: FTPrimaryTitleLabel = .init(textAlignment: .center, ofSize: 13)
@@ -20,12 +20,12 @@ final class BusinessCell: UICollectionViewCell {
 		configure()
 	}
 	
-	func set(with business: Business) -> Void {
+	func set(with business: Business) {
 		businessNameLabel.text = business.name
 		profileImageView.downloadImage(from: business.imageURL)
 	}
 	
-	private func configure() -> Void {
+	private func configure() {
 		addAllSubviews(profileImageView, businessNameLabel)
 		
 		profileImageView.constrainToUpperHalf(of: self, padding: edgePadding)

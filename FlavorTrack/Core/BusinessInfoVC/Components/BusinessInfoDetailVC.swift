@@ -38,7 +38,7 @@ final class BusinessInfoDetailVC: UIViewController {
 }
 
 private extension BusinessInfoDetailVC {
-	private func layoutUIElements() -> Void {
+	private func layoutUIElements() {
 		view.addAllSubviewsAndDisableAutoConstraints(locationIcon, locationLabel, phoneIcon,
 													 phoneLabel, tagIcon, tagLabel, linkIcon, linkLabel)
 		
@@ -87,7 +87,7 @@ private extension BusinessInfoDetailVC {
 		])
 	}
 	
-	private func configUIElements() -> Void {
+	private func configUIElements() {
 		// Location
 		locationIcon.image = SFSymbols.mapPin
 		locationIcon.tintColor = .secondaryLabel
@@ -119,7 +119,7 @@ private extension BusinessInfoDetailVC {
 		linkLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(yelpUrlTapped)))
 	}
 	
-	private func configAccessibilityForIcons() -> Void {
+	private func configAccessibilityForIcons() {
 		locationIcon.isAccessibilityElement = true
 		locationIcon.accessibilityLabel = NSLocalizedString("Location", comment: "")
 		locationIcon.accessibilityValue = "icon"
@@ -137,8 +137,7 @@ private extension BusinessInfoDetailVC {
 		linkIcon.accessibilityValue = "icon"
 	}
 	
-	@objc
-	private func yelpUrlTapped(_ sender: UITapGestureRecognizer) {
+	@objc private func yelpUrlTapped(_ sender: UITapGestureRecognizer) {
 		guard let url = URL(string: business.yelpUrl) else { return }
 		UIApplication.shared.open(url)
 	}

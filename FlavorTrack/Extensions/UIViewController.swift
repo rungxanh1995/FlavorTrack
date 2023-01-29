@@ -10,8 +10,7 @@ import UIKit
 // MARK: - Keyboard
 extension UIViewController {
 	
-	@objc
-	func keyboardWillShow(sender notification: NSNotification) {
+	@objc func keyboardWillShow(sender notification: NSNotification) {
 		guard let userInfo = notification.userInfo,
 			  let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue,
 			  let currentTextField = UIResponder.currentFirst() as? UITextField else { return }
@@ -29,8 +28,7 @@ extension UIViewController {
 		}
 	}
 	
-	@objc
-	func keyboardWillHide(sender notification: NSNotification) {
+	@objc func keyboardWillHide(sender notification: NSNotification) {
 		view.frame.origin.y = 0
 	}
 }
@@ -39,7 +37,7 @@ extension UIViewController {
 	/// Presents custom alert on main thread
 	func presentAlert(title: String = "Something bad happened",
 					  message: String,
-					  buttonTitle: String = "OK") -> Void {
+					  buttonTitle: String = "OK") {
 		
 		DispatchQueue.main.async { [weak self] in
 			let alert: FTAlert = .init(title: title, message: message, btnTitle: buttonTitle)
@@ -49,18 +47,18 @@ extension UIViewController {
 		}
 	}
 	
-	func presentDefaultAlert() -> Void {
+	func presentDefaultAlert() {
 		presentAlert(message: BusinessDataService.NetworkError.unableToComplete.rawValue)
 	}
 	
-	func showEmptyStateView(saying message: String, in view: UIView) -> Void {
+	func showEmptyStateView(saying message: String, in view: UIView) {
 		let emptyStateView: GHEmptyStateView = .init(message: message)
 		emptyStateView.frame = view.bounds
 		view.addSubview(emptyStateView)
 	}
 	
 	/// Place a child view controller into a custom view that this view controller manages
-	func addChildController(_ childController: UIViewController, to containerView: UIView) -> Void {
+	func addChildController(_ childController: UIViewController, to containerView: UIView) {
 		addChild(childController)
 		containerView.addSubview(childController.view)
 		childController.view.frame = containerView.bounds

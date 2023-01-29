@@ -16,7 +16,7 @@ final class FTAlertContainerView: UIView {
 		configure()
 	}
 	
-	private func configure() -> Void {
+	private func configure() {
 		disableAutoConstraints()
 		backgroundColor = .secondarySystemBackground
 		layer.cornerRadius = 16

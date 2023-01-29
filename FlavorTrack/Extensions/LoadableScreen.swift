@@ -11,12 +11,12 @@ import UIKit
 /// For example, when downloading data over internet.
 protocol LoadableScreen: AnyObject {
 	var containerView: UIView! { get set }
-	func showLoadingOverlay() -> Void
-	func dismissLoadingOverlay() -> Void
+	func showLoadingOverlay()
+	func dismissLoadingOverlay()
 }
 
 extension LoadableScreen where Self: UIViewController {
-	func showLoadingOverlay() -> Void {
+	func showLoadingOverlay() {
 		containerView = .init(frame: view.bounds)
 		view.addSubview(containerView)
 		containerView.backgroundColor = .systemBackground
@@ -36,7 +36,7 @@ extension LoadableScreen where Self: UIViewController {
 		indicatorOverlay.startAnimating()
 	}
 	
-	func dismissLoadingOverlay() -> Void {
+	func dismissLoadingOverlay() {
 		DispatchQueue.main.async { [weak self] in
 			self?.containerView.removeFromSuperview()
 			self?.containerView = nil

@@ -26,7 +26,7 @@ final class FavoriteListVC: UIViewController {
     }
     
 
-	private func getFavoriteList() -> Void {
+	private func getFavoriteList() {
 		let result = PersistenceManager.retrieveFavoritesAndHandleError()
 		switch result {
 			case .success(let favorites):
@@ -41,14 +41,14 @@ final class FavoriteListVC: UIViewController {
 		}
 	}
 
-	private func configTableView() -> Void {
+	private func configTableView() {
 		tableView = .init(frame: view.bounds, style: .insetGrouped)
 		view.addSubview(tableView)
 		
 		tableView.delegate = self
 		tableView.dataSource = self
 		tableView.rowHeight = 72
-		tableView.register(FavoriteListCell.self, forCellReuseIdentifier: FavoriteListCell.REUSE_ID)
+		tableView.register(FavoriteListCell.self, forCellReuseIdentifier: FavoriteListCell.reuseIdentifier)
 	}
 }
 
@@ -58,7 +58,7 @@ extension FavoriteListVC: UITableViewDelegate, UITableViewDataSource {
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		let cell = tableView.dequeueReusableCell(withIdentifier: FavoriteListCell.REUSE_ID,
+		let cell = tableView.dequeueReusableCell(withIdentifier: FavoriteListCell.reuseIdentifier,
 												 for: indexPath) as! FavoriteListCell
 		cell.set(with: allFavorites[indexPath.row])
 		return cell
