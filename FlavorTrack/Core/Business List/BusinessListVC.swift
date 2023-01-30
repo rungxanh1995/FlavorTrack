@@ -54,8 +54,6 @@ private extension BusinessListVC {
 		view.addSubview(collectionView)
 		collectionView.backgroundColor = .systemBackground
 		collectionView.register(BusinessCell.self, forCellWithReuseIdentifier: BusinessCell.reuseIdentifier)
-		
-		collectionView.delegate = self // for pagination
 	}
 	
 	private func configDataSource() {
