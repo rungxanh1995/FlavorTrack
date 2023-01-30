@@ -10,7 +10,7 @@ import UIKit
 final class FavoriteListCell: UITableViewCell {
 
 	/// Reusable identifier of the cell
-	static let REUSE_ID = "FavoriteCell"
+	static let reuseIdentifier = "FavoriteListCell"
 	
 	private let profileImageView: FTProfileImageView = .init(frame: .zero)
 	private let nameLabel: FTPrimaryTitleLabel = .init(textAlignment: .left, ofSize: 17)
@@ -25,7 +25,7 @@ final class FavoriteListCell: UITableViewCell {
 		configAccessibilityForIcons()
 	}
 	
-	private func configure() -> Void {
+	private func configure() {
 		accessoryType = .detailButton
 		
 		addAllSubviewsAndDisableAutoConstraints(profileImageView, nameLabel, ratingIcon,
@@ -83,7 +83,7 @@ final class FavoriteListCell: UITableViewCell {
 		tagLabel.text = favorite.readableCategories
 	}
 	
-	private func configAccessibilityForIcons() -> Void {
+	private func configAccessibilityForIcons() {
 		ratingIcon.isAccessibilityElement = true
 		ratingIcon.accessibilityLabel = NSLocalizedString("Rating", comment: "The noun")
 		ratingIcon.accessibilityValue = "icon"

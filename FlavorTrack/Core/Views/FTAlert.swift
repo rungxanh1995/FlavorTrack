@@ -51,7 +51,7 @@ final class FTAlert: UIViewController {
 
 // MARK: - UI Configuration
 private extension FTAlert {
-	private func configContainerView() -> Void {
+	private func configContainerView() {
 		view.addSubview(containerView)
 		containerView.pinToCenter(of: view)
 		
@@ -61,7 +61,7 @@ private extension FTAlert {
 		])
 	}
 	
-	private func configTitleLabel() -> Void {
+	private func configTitleLabel() {
 		containerView.addSubview(titleLabel)
 		titleLabel.text = NSLocalizedString(titleString ?? "Something went wrong", comment: "The text of the alert title")
 		
@@ -69,7 +69,7 @@ private extension FTAlert {
 		NSLayoutConstraint.activate([titleLabel.heightAnchor.constraint(equalToConstant: 28)])
 	}
 	
-	private func configAlertButton() -> Void {
+	private func configAlertButton() {
 		containerView.addSubview(alertButton)
 		alertButton.setTitle(NSLocalizedString(buttonTitleString ?? "OK", comment: "The text of the alert button title"), for: .normal)
 		alertButton.addTarget(self, action: #selector(dismissAlert), for: .touchUpInside)
@@ -78,8 +78,7 @@ private extension FTAlert {
 		NSLayoutConstraint.activate([alertButton.heightAnchor.constraint(equalToConstant: 48)])
 	}
 	
-	@objc
-	private func dismissAlert() -> Void { dismiss(animated: true) }
+	@objc private func dismissAlert() -> Void { dismiss(animated: true) }
 	
 	/// Message would fill up the space between title and action button,
 	/// so please call it after you have already configured the other 2 views

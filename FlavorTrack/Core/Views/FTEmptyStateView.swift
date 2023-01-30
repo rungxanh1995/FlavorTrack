@@ -23,7 +23,7 @@ final class GHEmptyStateView: UIView {
 		messageLabel.text = NSLocalizedString(message, comment: "The text of the empty state view")
 	}
 	
-	private func configure() -> Void {
+	private func configure() {
 		addSubview(logoImageView)
 		addSubview(messageLabel)
 		

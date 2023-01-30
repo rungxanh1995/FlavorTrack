@@ -18,7 +18,7 @@ final class FTProfileImageView: UIImageView {
 		configure()
 	}
 	
-	private func configure() -> Void {
+	private func configure() {
 		disableAutoConstraints()
 
 		image = placeholderImage

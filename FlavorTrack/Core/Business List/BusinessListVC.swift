@@ -11,8 +11,8 @@ final class BusinessListVC: UIViewController, LoadableScreen {
 	
 	internal enum CollectionSection { case main }
 	
-	var businessType: String!
-	var searchedLocation: String!
+    private var businessType: String!
+    private var searchedLocation: String!
 	private var businessList: [Business] = []
 	private var filteredBusinessList: [Business] = []
 	
@@ -49,25 +49,25 @@ final class BusinessListVC: UIViewController, LoadableScreen {
 
 // MARK: - UI/Data Configuration
 private extension BusinessListVC {
-	private func configCollectionView() -> Void {
+	private func configCollectionView() {
 		collectionView = .init(frame: view.bounds, collectionViewLayout: UIHelper.makeThreeColumnFlowLayout(in: view))
 		view.addSubview(collectionView)
 		collectionView.backgroundColor = .systemBackground
-		collectionView.register(BusinessCell.self, forCellWithReuseIdentifier: BusinessCell.REUSE_ID)
+		collectionView.register(BusinessCell.self, forCellWithReuseIdentifier: BusinessCell.reuseIdentifier)
 		
 		collectionView.delegate = self // for pagination
 	}
 	
-	private func configDataSource() -> Void {
+	private func configDataSource() {
 		dataSource = .init(collectionView: collectionView,
 						   cellProvider: { (collectionView, indexPath, business) -> UICollectionViewCell? in
-			let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BusinessCell.REUSE_ID, for: indexPath) as! BusinessCell
+			let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BusinessCell.reuseIdentifier, for: indexPath) as! BusinessCell
 			cell.set(with: business)
 			return cell
 		})
 	}
 	
-	private func configSearchBar() -> Void {
+	private func configSearchBar() {
 		let searchController: UISearchController = .init()
 		searchController.searchBar.placeholder = NSLocalizedString("Search a name", comment: "The placeholder of search bar in Business list controller")
 		searchController.searchResultsUpdater = self
@@ -75,7 +75,7 @@ private extension BusinessListVC {
 		navigationItem.searchController = searchController
 	}
 	
-	private func getBusinessList(for businessType: String, near location: String) -> Void {
+	private func getBusinessList(for businessType: String, near location: String) {
 		showLoadingOverlay()
 		
 		defer { dismissLoadingOverlay() }
@@ -90,7 +90,7 @@ private extension BusinessListVC {
 		}
 	}
 	
-	private func updateUI(with newBusinessList: [Business]) -> Void {
+	private func updateUI(with newBusinessList: [Business]) {
 		businessList.append(contentsOf: newBusinessList)
 		
 		if businessList.isEmpty {
@@ -104,7 +104,7 @@ private extension BusinessListVC {
 		}
 	}
 	
-	private func updateData(using businessList: [Business]) -> Void {
+	private func updateData(using businessList: [Business]) {
 		var snapshot: NSDiffableDataSourceSnapshot<CollectionSection, Business> = .init()
 		snapshot.appendSections([.main])
 		snapshot.appendItems(businessList)

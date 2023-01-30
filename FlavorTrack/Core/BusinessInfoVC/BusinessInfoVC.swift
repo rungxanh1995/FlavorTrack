@@ -48,7 +48,7 @@ final class BusinessInfoVC: UIViewController, LoadableScreen {
 
 private extension BusinessInfoVC {
 	
-	private func configNavigationBarButtons() -> Void {
+	private func configNavigationBarButtons() {
 		let doneBarBtn: UIBarButtonItem = .init(barButtonSystemItem: .done, target: self, action: #selector(dismissVC))
 		doneBarBtn.isAccessibilityElement = true
 		doneBarBtn.accessibilityLabel = NSLocalizedString("Done and dismiss view", comment: "The accessibility label of the Done navigation bar button")
@@ -61,7 +61,7 @@ private extension BusinessInfoVC {
 		navigationItem.setLeftBarButtonItems([favBarBtn], animated: true)
 	}
 	
-	private func layoutUIElements() -> Void {
+	private func layoutUIElements() {
 		view.addAllSubviewsAndDisableAutoConstraints(scrollView)
 		scrollView.addAllSubviewsAndDisableAutoConstraints(contentView)
 		contentView.addAllSubviewsAndDisableAutoConstraints(headerView, detailView, mapHostingView)
@@ -89,7 +89,7 @@ private extension BusinessInfoVC {
 		])
 	}
 	
-	private func configUIElements(for business: Business) -> Void {
+	private func configUIElements(for business: Business) {
 		addChildController(BusinessInfoHeaderVC(
 			for: business, near: searchedLocation.capitalized(with: .current)),
 			to: headerView)
@@ -97,11 +97,9 @@ private extension BusinessInfoVC {
 		addChildController(BusinessInfoMapVC(for: business, delegate: self), to: mapHostingView)
 	}
 	
-	@objc
-	private func dismissVC() { dismiss(animated: true) }
+	@objc private func dismissVC() { dismiss(animated: true) }
 	
-	@objc
-	private func favoriteButtonClicked() -> Void {
+	@objc private func favoriteButtonClicked() {
 		showLoadingOverlay()
 		defer { dismissLoadingOverlay() }
 		

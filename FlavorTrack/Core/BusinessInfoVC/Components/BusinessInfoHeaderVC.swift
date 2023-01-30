@@ -44,10 +44,10 @@ final class BusinessInfoHeaderVC: UIViewController {
 
 // MARK: - UI Configuration
 private extension BusinessInfoHeaderVC {
-	private func layoutUIElements() -> Void {
-		view.addAllSubviewsAndDisableAutoConstraints(profileImageView, nameLabel, distanceIcon,
-													 distanceLabel, openStatusIcon, openStatusLabel,
-													 costIcon, costLabel, underlyingCostLabel, ratingIcon, ratingLabel)
+	private func layoutUIElements() {
+        view.addAllSubviewsAndDisableAutoConstraints(profileImageView, nameLabel, distanceIcon,
+                                                     distanceLabel, openStatusIcon, openStatusLabel,
+                                                     costIcon, costLabel, underlyingCostLabel, ratingIcon, ratingLabel)
 		
 		let imgAndTextPadding: CGFloat = 12.0
 		let infoPiecePadding: CGFloat = 10.0
@@ -109,7 +109,7 @@ private extension BusinessInfoHeaderVC {
 		])
 	}
 	
-	private func configUIElements() -> Void {
+	private func configUIElements() {
 		profileImageView.downloadImage(from: business.imageURL)
 		
 		nameLabel.text = business.name
@@ -137,7 +137,7 @@ private extension BusinessInfoHeaderVC {
 		ratingLabel.text = "\(business.rating)"
 	}
 	
-	private func configAccessibilityForIcons() -> Void {
+	private func configAccessibilityForIcons() {
 		distanceIcon.isAccessibilityElement = true
 		distanceIcon.accessibilityLabel = NSLocalizedString("Distance", comment: "The noun")
 		distanceIcon.accessibilityValue = "icon"
