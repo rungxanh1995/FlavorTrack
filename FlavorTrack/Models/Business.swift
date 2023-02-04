@@ -31,7 +31,7 @@ struct Business: Codable {
 		case displayPhone = "display_phone"
 		case distance = "distance"
 	}
-	
+
 	var readableCategories: String {
 		var tags: [String] = []
 		for eachCategory in categories {

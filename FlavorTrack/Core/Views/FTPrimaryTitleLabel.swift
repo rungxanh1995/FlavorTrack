@@ -15,13 +15,13 @@ final class FTPrimaryTitleLabel: UILabel {
 		super.init(frame: frame)
 		configure()
 	}
-	
+
 	convenience init(textAlignment: NSTextAlignment, ofSize fontSize: CGFloat) {
 		self.init(frame: .zero)
 		self.textAlignment = textAlignment
 		self.font = .systemFont(ofSize: fontSize, weight: .bold)
 	}
-	
+
 	private func configure() {
 		disableAutoConstraints()
 

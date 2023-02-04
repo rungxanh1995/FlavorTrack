@@ -15,12 +15,12 @@ final class FTSecondaryTitleLabel: UILabel {
 		super.init(frame: frame)
 		configure()
 	}
-	
+
 	convenience init(ofSize size: CGFloat) {
 		self.init(frame: .zero)
 		font = .systemFont(ofSize: size, weight: .medium)
 	}
-	
+
 	private func configure() {
 		disableAutoConstraints()
 
@@ -29,8 +29,8 @@ final class FTSecondaryTitleLabel: UILabel {
 		minimumScaleFactor = 1.0
 		lineBreakMode = .byTruncatingTail
 	}
-	
-	func setNew(color: UIColor) -> Void {
+
+	func setNew(color: UIColor) {
 		textColor = color
 	}
 }

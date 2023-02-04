@@ -10,17 +10,17 @@ import UIKit
 final class ImageDataService {
 	static let shared: ImageDataService = .init()
 	private init() {}
-	
+
 	private let cache: NSCache<NSString, UIImage> = .init()
 
-	func downloadOrGetFromCache(from urlString: String, onComplete: @escaping (UIImage?) -> Void) -> Void {
+	func downloadOrGetFromCache(from urlString: String, onComplete: @escaping (UIImage?) -> Void) {
 		let cacheKey = NSString(string: urlString)
 		// Access cached image if exists
 		if let image = cache.object(forKey: cacheKey) {
 			onComplete(image)
 			return
 		}
-		
+
 		// otherwise, download and cache
 		guard let url = URL(string: urlString) else { return }
 		URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
@@ -37,16 +37,16 @@ final class ImageDataService {
 		}
 		.resume()
 	}
-	
+
 	@available(iOS 15.0, *)
 	func downloadOrGetFromCache(from urlString: String) async -> UIImage? {
 		let cacheKey = NSString(string: urlString)
 		// Access cached image if exists
 		if let image = cache.object(forKey: cacheKey) { return image }
-		
+
 		// otherwise, download and cache
 		guard let url = URL(string: urlString) else { return nil }
-		
+
 		do {
 			let (data, _) = try await URLSession.shared.data(from: url)
 			guard let image = UIImage(data: data) else { return nil }

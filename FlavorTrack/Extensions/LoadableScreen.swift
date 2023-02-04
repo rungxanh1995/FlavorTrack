@@ -24,18 +24,18 @@ extension LoadableScreen where Self: UIViewController {
 		UIView.animate(withDuration: 0.25) { [weak self] in
 			self?.containerView.alpha = 0.8
 		}
-		
+
 		let indicatorOverlay: UIActivityIndicatorView = .init(style: .large)
 		containerView.addSubview(indicatorOverlay)
 		indicatorOverlay.translatesAutoresizingMaskIntoConstraints = false
-		
+
 		NSLayoutConstraint.activate([
 			indicatorOverlay.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
 			indicatorOverlay.centerYAnchor.constraint(equalTo: containerView.centerYAnchor)
 		])
 		indicatorOverlay.startAnimating()
 	}
-	
+
 	func dismissLoadingOverlay() {
 		DispatchQueue.main.async { [weak self] in
 			self?.containerView.removeFromSuperview()
