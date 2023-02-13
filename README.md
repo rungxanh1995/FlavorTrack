@@ -13,7 +13,7 @@ I enjoy walking for better health and saving money. So I want FlavorTrack app to
 
 The app uses data provided from Yelp, and results fetched are sorted by distance.
 
-## Concepts
+## Concepts Used
 <table>
     <thead>
         <tr>
@@ -61,6 +61,10 @@ The app uses data provided from Yelp, and results fetched are sorted by distance
         <tr>
             <td>MapKit & Domain Model Conversion</td>
             <td>Apple MapKit API is implemented to show businesses on a map, so users who are visual like me would appreciate the intuition this provides</td>
+        </tr>
+		<tr>
+            <td>SwiftLint</td>
+            <td>I've excluded the "line_length" rule as it's impossible to shorten the Yelp API key. I still adhere to the general line length in my code. Having SwiftLint helps maintain code uniformity and follow industry standards</td>
         </tr>
     </tbody>
 </table>
