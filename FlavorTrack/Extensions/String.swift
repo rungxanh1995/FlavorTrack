@@ -12,15 +12,16 @@ extension String {
 	var percentEncoded: String {
 		self.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? self
 	}
-	
+
 	/// Generates a localized string with format "X (the string itself) near Y".
 	///
-	/// Calling `"coffee".localizedDynamicString(near: "123 This Street, Toronto")` creates a localizable `"coffee near 123 This Street, Toronto"`
+	/// Calling `"coffee".localizedDynamicString(near: "123 This Street, Toronto")`
+	/// creates a localizable `"coffee near 123 This Street, Toronto"`
 	func localizedDynamicString(near location: String) -> String {
 		let localizedString = NSLocalizedString("%@ near %@", comment: "X business near Y location")
 		return String(format: localizedString, self, location)
 	}
-	
+
 	/// Generates a localized string for self.
 	/// given you pass an appropriate key with 1 placeholder so that it can search from your localizabe string file.
 	///

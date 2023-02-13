@@ -15,7 +15,7 @@ final class FTAlertContainerView: UIView {
 		super.init(frame: frame)
 		configure()
 	}
-	
+
 	private func configure() {
 		disableAutoConstraints()
 		backgroundColor = .secondarySystemBackground
@@ -26,7 +26,7 @@ final class FTAlertContainerView: UIView {
 
 	override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
 		super.traitCollectionDidChange(previousTraitCollection)
-		
+
 		/// Fixes border not updating its color when switching light/dark mode
 		if traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
 			layer.borderColor = UIColor.systemGray4.cgColor
