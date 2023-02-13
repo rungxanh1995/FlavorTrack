@@ -6,7 +6,7 @@
 //
 
 import Foundation
-// swiftlint:disable line_length
+
 enum ApiConstants {
 
 	static private let clientId = "UrRaT15yXM8CpQDa4GBMPA"

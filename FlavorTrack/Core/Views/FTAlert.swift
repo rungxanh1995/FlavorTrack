@@ -63,7 +63,9 @@ private extension FTAlert {
 
 	private func configTitleLabel() {
 		containerView.addSubview(titleLabel)
-		titleLabel.text = NSLocalizedString(titleString ?? "Something went wrong", comment: "The text of the alert title")
+		titleLabel.text = NSLocalizedString(
+			titleString ?? "Something went wrong",
+			comment: "The text of the alert title")
 
 		titleLabel.constrainToUpperHalf(of: containerView, padding: edgePadding)
 		NSLayoutConstraint.activate([titleLabel.heightAnchor.constraint(equalToConstant: 28)])

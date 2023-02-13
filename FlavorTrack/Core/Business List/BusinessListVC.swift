@@ -60,10 +60,11 @@ private extension BusinessListVC {
 	private func configDataSource() {
 		dataSource = .init(collectionView: collectionView,
 						   cellProvider: { (collectionView, indexPath, business) -> UICollectionViewCell? in
-			// swiftlint:disable force_cast
-			let cell = collectionView.dequeueReusableCell(
+			guard let cell = collectionView.dequeueReusableCell(
 				withReuseIdentifier: BusinessCell.reuseIdentifier,
-				for: indexPath) as! BusinessCell
+				for: indexPath) as? BusinessCell else {
+				fatalError("BusinessCell does not exist")
+			}
 			cell.set(with: business)
 			return cell
 		})

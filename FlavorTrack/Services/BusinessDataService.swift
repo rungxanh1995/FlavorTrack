@@ -37,7 +37,6 @@ final class BusinessDataService {
 		businessType: String,
 		onComplete: @escaping (Result<T, BusinessDataService.NetworkError>) -> Void) {
 
-		// swiftlint:disable line_length
 		let endpoint = "\(ApiConstants.Endpoint.base)?\(ApiConstants.Endpoint.addAddress(address.percentEncoded))&\(ApiConstants.Endpoint.addBusinessType(businessType.percentEncoded))&\(ApiConstants.Endpoint.defaultRadiusAndBatchLimit)"
 
 		guard let url = URL(string: endpoint) else {

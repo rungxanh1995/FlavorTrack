@@ -57,9 +57,11 @@ extension FavoriteListVC: UITableViewDelegate, UITableViewDataSource {
 	}
 
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		// swiftlint:disable force_cast
-		let cell = tableView.dequeueReusableCell(withIdentifier: FavoriteListCell.reuseIdentifier,
-												 for: indexPath) as! FavoriteListCell
+		guard let cell = tableView.dequeueReusableCell(
+			withIdentifier: FavoriteListCell.reuseIdentifier,
+			for: indexPath) as? FavoriteListCell else {
+			fatalError("FavoriteListCell does not exist")
+		}
 		cell.set(with: allFavorites[indexPath.row])
 		return cell
 	}
