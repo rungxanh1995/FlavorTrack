@@ -32,7 +32,7 @@ The app uses data provided from Yelp, and results fetched are sorted by distance
         </tr>
         <tr>
             <td>Separation of concerns</td>
-            <td>In addition to MVC modules, supporting ones (API, data fetching, persistence, extensions, etc. are also neatly structured for project readability amnd maintainability</td>
+            <td>In addition to MVC modules, supporting ones (API, data fetching, persistence, extensions, etc. are also neatly structured for project readability and maintainability</td>
         </tr>
         <tr>
             <td>Custom UI</td>
