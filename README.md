@@ -40,7 +40,7 @@ The app uses data provided from Yelp, and results fetched are sorted by distance
         </tr>
 		<tr>
             <td>Localization</td>
-            <td>Support another beside English for the app. At the moment, Vietnamese support is available.</td>
+            <td>Support another language beside English for the app. At the moment, Vietnamese support is available.</td>
         </tr>
         <tr>
             <td>Accessbility</td>
